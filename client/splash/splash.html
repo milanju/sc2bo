@@ -1,4 +1,10 @@
 <template name="splash">
   Splash
   <button class="new-buildorder">new buildorder</button>
+
+  <ul>
+  {{#each buildOrders}}
+    <li class="build-order-li">{{name}}, {{description}}</li>
+  {{/each}}
+  </ul>
 </template>
