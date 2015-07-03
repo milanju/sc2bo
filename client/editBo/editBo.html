@@ -1,0 +1,31 @@
+<template name="editBo">
+  <br>
+  editbo
+  <br>
+  {{buildOrderObject.name}}
+  <br>
+  {{buildOrerObject.description}}
+  <br>
+
+  <form id="add-new-command">
+    <input type="text" name="time" placeholder="time">
+    <input type="text" name="supply" placeholder="supply">
+    <input type="text" name="command" placeholder ="command">
+    <input type="submit">
+  </form>
+
+  <table>
+    <tr>
+      <th>Time</th>
+      <th>Supply</th>
+      <th>Command</th>
+    </tr>
+    {{#each getBuildOrder}}
+      <tr>
+        <td>{{time}}</td>
+        <td>{{supply}}</td>
+        <td>{{command}}</td>
+      </tr>
+    {{/each}}
+  </table>
+</template>

@@ -1,10 +1,14 @@
 Template.main.helpers({
-    "statusSplash": function() {
+    'statusSplash': function() {
       if(Session.get("status") === "splash") return true;
       else return false;
     },
-    "statusNewBo": function() {
+    'statusNewBo': function() {
       if(Session.get("status") === "newBo") return true;
+      else return false;
+    },
+    'statusEditBo': function() {
+      if(Session.get("status") === "editBo") return true;
       else return false;
     }
   });
