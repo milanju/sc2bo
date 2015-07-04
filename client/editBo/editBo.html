@@ -6,43 +6,53 @@
   <br>
   {{buildOrerObject.description}}
   <br>
-  <button id="play-bo" class="btn btn-success btn-raised">Play</button>
-  <button id="pause-bo" class="btn btn-warning btn-raised">Pause</button>
-  <button id="stop-bo" class="btn btn-danger btn-raised">Stop</button>
-  <br>
-  <br>
-  <form id="add-new-command">
-    <input type="text" name="time" placeholder="time">
-    <input type="text" name="supply" placeholder="supply">
-    <input type="text" name="command" placeholder ="command">
-    <input type="submit">
-  </form>
-  {{timer}}<br>
+  <div class="well">
+    <button id="play-bo" class="btn btn-success btn-raised">Play</button>
+    <button id="pause-bo" class="btn btn-warning btn-raised">Pause</button>
+    <button id="stop-bo" class="btn btn-danger btn-raised">Stop</button>
+  </div>
+  <div class="well">
+    <form id="add-new-command" class="form-horizontal">
+      <fieldset>
+        <div class="form-inline row">
+          <div class="col-xs-3"><input type="text" name="time" id="new-command-input" class="form-control" placeholder="time"></div>
+          <div class="col-xs-3"><input type="text" name="supply" id="new-command-input" class="form-control" placeholder="supply"></div>
+          <div class="col-xs-6"><input type="text" name="command" id="new-command-input" class="form-control" placeholder ="command"></div>
+        </div>
+        <input type="submit" class="btn btn-primary btn-raised">
+      </fieldset>
+    </form>
+  </div>
+  <div class="well">
+    {{timer}}<br>
+    <div class="row">
+      <div class="col-sm-3 steps last-command">{{last.command}}</div>
 
-  <div class="col-sm-3 steps last-command">{{last.command}}</div>
+      <div class="col-sm-6 steps actual-command">{{actual.command}}</div>
 
-  <div class="col-sm-6 steps actual-command">{{actual.command}}</div>
-
-  <div class="col-sm-3 steps next-command">{{next.command}}</div>
-
-  <table class="table table-striped table-hover">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Time</th>
-        <th>Supply</th>
-        <th>Command</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each getBuildOrder}}
-        <tr id="{{clClass}}">
-          <td><div class="remove-command"></div></td>
-          <td>{{time}}</td>
-          <td>{{supply}}</td>
-          <td>{{command}}</td>
+      <div class="col-sm-3 steps next-command">{{next.command}}</div>
+    </div>
+  </div>
+  <div class="well">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Time</th>
+          <th>Supply</th>
+          <th>Command</th>
         </tr>
-      {{/each}}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {{#each getBuildOrder}}
+          <tr id="{{clClass}}">
+            <td><div class="remove-command"></div></td>
+            <td>{{time}}</td>
+            <td>{{supply}}</td>
+            <td>{{command}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
 </template>

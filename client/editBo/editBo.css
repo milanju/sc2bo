@@ -24,3 +24,7 @@
 .next-command {
 
 }
+
+#new-command-input {
+  width: 100%;
+}

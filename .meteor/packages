@@ -9,6 +9,8 @@ autopublish
 insecure
 accounts-password
 accounts-ui
-fezvrasta:bootstrap-material-design
 natestrauser:animate-css
 percolate:momentum
+bootstrap
+jquery
+fezvrasta:bootstrap-material-design
