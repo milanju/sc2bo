@@ -1,9 +1,26 @@
-.td-big{
-  font-size: 40pt;
+#tr-actual{
+  background-color: #4caf50;
 }
 
 .remove-command {
   width: 10px;
   height: 10px;
   background-color: red;
+}
+
+.steps {
+  display: inline-block;
+  text-align: center;
+}
+
+.last-command {
+
+}
+
+.actual-command {
+  font-size: 20pt;
+}
+
+.next-command {
+
 }

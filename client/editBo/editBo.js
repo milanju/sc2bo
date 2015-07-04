@@ -6,8 +6,29 @@ playerClock = function() {
 };
 
 Template.editBo.created = function() {
+  Session.set("last", {command: "none"});
+  Session.set("actual", {command: "none"});
+  Session.set("next", {command: "none"});
   Meteor.setInterval(playerClock, 1000);
 };
+
+Template.editBo.rerendered = function () {
+  var $this = this;
+    Meteor.defer(function(){
+      document.getElementById("commands-list")._uihooks = {
+        insertElement: function(node, next) {
+          $(node).addClass('animated zoomInUp').insertBefore(next);
+        },
+        removeElement: function(node) {
+          $(node).removeClass().addClass('animated fadeOutRight')
+            .on(ANIMATION_END, function() { $(node).remove() });
+        },
+        moveElement: function(node) {
+          $(node).fadeOut().fadeIn();;
+        }
+      }
+    });
+}
 
 Template.editBo.helpers({
   'buildOrderObject': function() {
@@ -23,18 +44,27 @@ Template.editBo.helpers({
     return buildOrder.sort(compare);
   },
   'last': function() {
+    $('.last-command').addClass('animated tada').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+      $('.last-command').removeClass('animated tada');
+      });
     return Session.get("last");
   },
   'actual': function() {
+    $('.actual-command').addClass('animated tada').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+      $('.actual-command').removeClass('animated tada');
+      });
     return Session.get("actual");
   },
   'next': function() {
+    $('.next-command').addClass('animated tada').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+      $('.next-command').removeClass('animated tada');
+      });
     return Session.get("next");
   },
   'timer': function() {
     return Session.get("playerTime");
   },
-  'tdSize': function() {
+  'clClass': function() {
     getBo = function() {
       function compare(a, b) {
         a.time = String(a.time).replace(':', '.');
@@ -60,10 +90,10 @@ Template.editBo.helpers({
       }
     }
     if(this.time === closestTime) {
-      Session.set("last", buildOrder[closestCount-1]);
+      if(buildOrder[closestCount-1]) Session.set("last", buildOrder[closestCount-1]);
       Session.set("actual", buildOrder[closestCount]);
       Session.set("next", buildOrder[closestCount+1]);
-      return 'td-big';
+      return 'tr-actual';
     } else {
       return "";
     }
@@ -99,6 +129,9 @@ Template.editBo.events({
   'click #stop-bo': function(event) {
     Session.set("playerTime", 0);
     Session.set("playerStatus", "pause");
+    Session.set("last", {command: "none"});
+    Session.set("actual", {command: "none"});
+    Session.set("next", {command: "none"});
     console.log("stop");
   },
   'click .remove-command': function(event) {
