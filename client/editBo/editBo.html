@@ -6,25 +6,32 @@
   <br>
   {{buildOrerObject.description}}
   <br>
-
+  <button id="play-bo">Play</button>
+  <button id="pause-bo">Pause</button>
+  <button id="stop-bo">Stop</button>
+  <br>
+  <br>
   <form id="add-new-command">
     <input type="text" name="time" placeholder="time">
     <input type="text" name="supply" placeholder="supply">
     <input type="text" name="command" placeholder ="command">
     <input type="submit">
   </form>
-
+  {{timer}}<br>
+  Last: {{last.command}}, Actual: {{actual.command}}, Next: {{next.command}}
   <table>
     <tr>
+      <th></th>
       <th>Time</th>
       <th>Supply</th>
       <th>Command</th>
     </tr>
     {{#each getBuildOrder}}
       <tr>
-        <td>{{time}}</td>
-        <td>{{supply}}</td>
-        <td>{{command}}</td>
+        <td><div class="remove-command"></div></td>
+        <td><div class="{{tdSize}}">{{time}}</div></td>
+        <td><div class="{{tdSize}}">{{supply}}</div></td>
+        <td><div class="{{tdSize}}">{{command}}</div></td>
       </tr>
     {{/each}}
   </table>

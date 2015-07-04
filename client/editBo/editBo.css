@@ -1,0 +1,9 @@
+.td-big{
+  font-size: 40pt;
+}
+
+.remove-command {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+}
