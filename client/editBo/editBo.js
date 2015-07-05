@@ -45,7 +45,8 @@ Template.editBo.helpers({
     return Session.get("next");
   },
   'timer': function() {
-    return Session.get("playerTime");
+    var pTime = parseInt(Session.get("playerTime"));
+    return Math.floor(pTime / 60) + ":" + pTime % 60;
   },
   'clClass': function() {
     getBo = function() {
@@ -80,6 +81,9 @@ Template.editBo.helpers({
     } else {
       return "";
     }
+  },
+  'convertedTime': function() {
+    return Math.floor(this.time / 60) + ":" + this.time % 60;
   }
 });
 
@@ -88,11 +92,11 @@ Template.editBo.events({
     console.log("trigger");
     var activeBo = BuildOrders.findOne({_id: Session.get("activeBo")});
     var buildOrder = activeBo.buildOrder;
-    var time = event.target.time.value;
+    var timeArray = event.target.time.value.split(":");
     var supply = event.target.supply.value;
     var command = event.target.command.value;
     var _id = Random.id();
-
+    var time = (parseInt(timeArray[0]) * 60) + parseInt(timeArray[1]);
     buildOrder.push({_id: _id, time: time, supply: supply, command: command});
     BuildOrders.update({_id: Session.get("activeBo")}, {$set: {buildOrder: buildOrder}});
 
