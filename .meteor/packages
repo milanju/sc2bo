@@ -11,6 +11,6 @@ accounts-password
 accounts-ui
 natestrauser:animate-css
 percolate:momentum
-bootstrap
 jquery
-fezvrasta:bootstrap-material-design
+materialize:materialize
+fourseven:scss

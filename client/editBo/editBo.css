@@ -2,10 +2,7 @@
   background-color: #4caf50;
 }
 
-.remove-command {
-  width: 10px;
-  height: 10px;
-  background-color: red;
+#new-command-input {
 }
 
 .steps {
@@ -25,6 +22,46 @@
 
 }
 
-#new-command-input {
-  width: 100%;
+.time-input {
+}
+
+.supply-input {
+}
+
+.command-input {
+}
+
+.table-remove {
+  width: 20px;
+}
+
+.table-time {
+  width: 60px;
+}
+
+.table-supply {
+  width: 80px;
+}
+
+.form-card {
+  padding-bottom: 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.player-card {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.table-card {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.timer-text {
+  display: inline-block;
+}
+
+.player-button {
+  margin: 10px;
 }

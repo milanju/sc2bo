@@ -6,9 +6,10 @@ playerClock = function() {
 };
 
 Template.editBo.created = function() {
+  var bo = BuildOrders.findOne({_id: Session.get("activeBo")}).buildOrder;
   Session.set("last", {command: "none"});
   Session.set("actual", {command: "none"});
-  Session.set("next", {command: "none"});
+  if(bo[0]) Session.set("next", {command: bo[0].command});
   Meteor.setInterval(playerClock, 1000);
 };
 
