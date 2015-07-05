@@ -1,14 +1,13 @@
-<head>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <title>StarCraft 2 Buildorder Tool</title>
-</head>
-
-<body>
-  <div class="container">
-    <a href="/"><h1>StarCraft 2 Buildorder Tool</h1></a>
-
-    {{> loginButtons}}
-
-    {{> main}}
-  </div>
-</body>
+<template name="home">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>StarCraft 2 Buildorder Tool</title>
+  </head>
+  <body>
+    <div class="container">
+      <a id="logo" href="/"><h1>StarCraft 2 Buildorder Tool</h1></a>
+      {{> atForm}}
+      {{> main}}
+    </div>
+  </body>
+</template>

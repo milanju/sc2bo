@@ -10,7 +10,11 @@ Template.editBo.created = function() {
   Session.set("last", {command: "none"});
   Session.set("actual", {command: "none"});
   if(bo[0]) Session.set("next", {command: bo[0].command});
-  Meteor.setInterval(playerClock, 1000);
+  if(bo.timeStrategy === "real") {
+    Meteor.setInterval(playerClock, 1000);
+  } else {
+    Meteor.setInterval(playerClock, 714);
+  }
 };
 
 Template.editBo.helpers({

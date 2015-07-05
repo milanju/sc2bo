@@ -1,8 +1,23 @@
 <template name="newBo">
-  <form id="new-bo-form">
-    Enter Build Order Name
-    <input type="text" class="new-bo-name" placeholder="name">
-    <input type="text" class="new-bo-description" placeholder="description">
-    <input type="submit" class="new-bo-submit">
-  </form>
+  <div class="row">
+    <form id="new-bo-form" class="col s12">
+      <div class="input-field">
+        <input type="text" id="new-bo-name" class="new-bo-name">
+        <label for="new-bo-name">Name</label>
+      </div>
+      <div class="input-field">
+        <input type="text" id="new-bo-description" class="new-bo-description">
+        <label for="new-bo-description">Description</label>
+      </div>
+      <p>
+        <input name="group1" type="radio" id="time-1" checked>
+        <label for="time-1">hots time (blizzard seconds)</label>
+      </p>
+      <p>
+        <input name="group1" type="radio" id="time-2">
+        <label for="time-2">lotv time (real seconds)</label>
+      </p>
+      <button type="submit" class="new-bo-submit waves-effect waves-light btn">Submit</button>
+    </form>
+  </div>
 </template>

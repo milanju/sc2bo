@@ -14,3 +14,5 @@ percolate:momentum
 jquery
 materialize:materialize
 fourseven:scss
+useraccounts:materialize
+useraccounts:core
