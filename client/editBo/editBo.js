@@ -11,9 +11,11 @@ Template.editBo.created = function() {
   Session.set("actual", {command: "none"});
   if(bo[0]) Session.set("next", {command: bo[0].command});
   if(bo.timeStrategy === "real") {
-    Meteor.setInterval(playerClock, 1000);
+    console.log("real");
+    Session.set("interval", Meteor.setInterval(playerClock, 1000));
   } else {
-    Meteor.setInterval(playerClock, 714);
+    console.log("blizzard");
+    Session.set("interval", Meteor.setInterval(playerClock, 714));
   }
 };
 

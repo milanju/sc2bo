@@ -5,7 +5,15 @@
   </head>
   <body>
     <div class="container">
-      <a id="logo" href="/"><h1>StarCraft 2 Buildorder Tool</h1></a>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" id="logo" class="brand-logo">StarCraft 2 Buildorder Tool</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            {{> atNavButton}}
+
+          </ul>
+        </div>
+      </nav>
       {{> atForm}}
       {{> main}}
     </div>

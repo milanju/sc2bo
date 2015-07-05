@@ -2,3 +2,12 @@
 body {
   background-color: #fafafa;
 }
+
+.nav-wrapper {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.above-all {
+  z-index: 100;
+}

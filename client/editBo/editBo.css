@@ -2,33 +2,13 @@
   background-color: #4caf50;
 }
 
-#new-command-input {
-}
-
 .steps {
   display: inline-block;
   text-align: center;
 }
 
-.last-command {
-
-}
-
 .actual-command {
   font-size: 20pt;
-}
-
-.next-command {
-
-}
-
-.time-input {
-}
-
-.supply-input {
-}
-
-.command-input {
 }
 
 .table-remove {
