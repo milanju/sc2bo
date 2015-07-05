@@ -128,11 +128,13 @@ Template.editBo.events({
     console.log("pause");
   },
   'click #stop-bo': function(event) {
+    var bo = BuildOrders.findOne({_id: Session.get("activeBo")}).buildOrder;
+
     Session.set("playerTime", 0);
     Session.set("playerStatus", "pause");
     Session.set("last", {command: "none"});
     Session.set("actual", {command: "none"});
-    Session.set("next", {command: "none"});
+    if(bo[0]) Session.set("next", {command: bo[0].command});
     console.log("stop");
   },
   'click .remove-command': function(event) {
