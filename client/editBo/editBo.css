@@ -2,6 +2,10 @@
   background-color: #4caf50;
 }
 
+.z-modify {
+  z-index: 1;
+}
+
 .steps {
   display: inline-block;
   text-align: center;
