@@ -13,24 +13,6 @@ Template.editBo.created = function() {
   Meteor.setInterval(playerClock, 1000);
 };
 
-Template.editBo.rerendered = function () {
-  var $this = this;
-    Meteor.defer(function(){
-      document.getElementById("commands-list")._uihooks = {
-        insertElement: function(node, next) {
-          $(node).addClass('animated zoomInUp').insertBefore(next);
-        },
-        removeElement: function(node) {
-          $(node).removeClass().addClass('animated fadeOutRight')
-            .on(ANIMATION_END, function() { $(node).remove() });
-        },
-        moveElement: function(node) {
-          $(node).fadeOut().fadeIn();;
-        }
-      }
-    });
-}
-
 Template.editBo.helpers({
   'buildOrderObject': function() {
     return BuildOrders.findOne({_id: Session.get("activeBo")});
