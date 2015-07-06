@@ -6,10 +6,10 @@ playerClock = function() {
 };
 
 Template.editBo.created = function() {
-  var bo = BuildOrders.findOne({_id: Session.get("activeBo")}).buildOrder;
+  var bo = BuildOrders.findOne({_id: Session.get("activeBo")});
   Session.set("last", {command: "none"});
   Session.set("actual", {command: "none"});
-  if(bo[0]) Session.set("next", {command: bo[0].command});
+  if(bo.buildOrder[0]) Session.set("next", {command: bo.buildOrder[0].command});
   if(bo.timeStrategy === "real") {
     console.log("real");
     Session.set("interval", Meteor.setInterval(playerClock, 1000));
@@ -25,9 +25,7 @@ Template.editBo.helpers({
   },
   'getBuildOrder': function() {
     function compare(a, b) {
-      a.time = String(a.time).replace(':', '.');
-      b.time = String(b.time).replace(':', '.');
-      return a.time - b.time;
+      return a.position - b.position;
     }
     var buildOrder = BuildOrders.findOne({_id: Session.get("activeBo")}).buildOrder;
     return buildOrder.sort(compare);
@@ -103,7 +101,13 @@ Template.editBo.events({
     var command = event.target.command.value;
     var _id = Random.id();
     var time = (parseInt(timeArray[0]) * 60) + parseInt(timeArray[1]);
-    buildOrder.push({_id: _id, time: time, supply: supply, command: command});
+    var position;
+    if(buildOrder[0]) {
+      position = buildOrder[buildOrder.length - 1].position + 1;
+    } else {
+      position = 0;
+    }
+    buildOrder.push({_id: _id, time: time, supply: supply, command: command, position: position});
     BuildOrders.update({_id: Session.get("activeBo")}, {$set: {buildOrder: buildOrder}});
 
     event.target.time.value = "";
@@ -139,6 +143,38 @@ Template.editBo.events({
         //console.log(buildOrderArray[i]._id + " //// " + this._id);
       }
     }
+    BuildOrders.update({_id: Session.get("activeBo")}, {$set: {buildOrder: buildOrderArray}});
+  },
+  'click .move-up': function(event) {
+    function compare(a, b) {
+      return a.position - b.position;
+    }
+    var buildOrder = BuildOrders.findOne({_id: Session.get("activeBo")});
+    var buildOrderArray = buildOrder.buildOrder;
+    for(var i = buildOrderArray.length - 1; i >= 0; i--) {
+      if((i != 0) && (buildOrderArray[i]._id === this._id)){
+        console.log("move " + i + " to " + (i-1));
+        buildOrderArray[i].position = buildOrderArray[i].position - 1;
+        buildOrderArray[i-1].position = buildOrderArray[i-1].position + 1;
+      }
+    }
+    buildOrderArray = buildOrderArray.sort(compare);
+    BuildOrders.update({_id: Session.get("activeBo")}, {$set: {buildOrder: buildOrderArray}});
+  },
+  'click .move-down': function(event) {
+    function compare(a, b) {
+      return a.position - b.position;
+    }
+    var buildOrder = BuildOrders.findOne({_id: Session.get("activeBo")});
+    var buildOrderArray = buildOrder.buildOrder;
+    for(var i = buildOrderArray.length - 1; i >= 0; i--) {
+      if((buildOrderArray[i] != buildOrderArray.length - 1) &&(buildOrderArray[i]._id === this._id)){
+        console.log("move " + i + " to " + (i+1));
+        buildOrderArray[i].position = buildOrderArray[i].position + 1;
+        buildOrderArray[i+1].position = buildOrderArray[i+1].position - 1;
+      }
+    }
+    buildOrderArray = buildOrderArray.sort(compare);
     BuildOrders.update({_id: Session.get("activeBo")}, {$set: {buildOrder: buildOrderArray}});
   }
 });

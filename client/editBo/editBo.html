@@ -46,6 +46,7 @@
               <th class="table-time">Time</th>
               <th class="table-supply">Supply</th>
               <th class="table-command">Command</th>
+              <th class="table-move"></th>
             </tr>
           </thead>
           <tbody>
@@ -55,6 +56,10 @@
                 <td>{{convertedTime}}</td>
                 <td>{{supply}}</td>
                 <td>{{command}}</td>
+                <td>
+                  <i class="move-up fa fa-arrow-up right"></i>
+                  <i class="move-down fa fa-arrow-down right"></i>
+                </td>
               </tr>
             {{/each}}
           </tbody>

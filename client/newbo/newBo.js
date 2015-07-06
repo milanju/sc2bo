@@ -1,7 +1,8 @@
 Template.newBo.events({
   "submit #new-bo-form": function (event) {
-    var name = event.target.children[0].value;
-    var description = event.target.children[1].value;
+    console.log(event);
+    var name = event.target.elements[0].value;
+    var description = event.target.elements[1].value;
     var timeStrategy;
 
     if(event.target.elements[2].checked === true) {
@@ -13,6 +14,7 @@ Template.newBo.events({
     var boId = BuildOrders.insert({
       name: name,
       description: description,
+      timeStrategy: timeStrategy,
       buildOrder: []
     });
     Session.set("activeBo", boId);
