@@ -14,13 +14,12 @@ Template.newBo.events({
     var boId = BuildOrders.insert({
       name: name,
       description: description,
+      userId: Meteor.user()._id,
       timeStrategy: timeStrategy,
       buildOrder: []
     });
     Session.set("activeBo", boId);
     Session.set("status", "editBo");
-
-    console.log(event);
     return false;
   }
 });
