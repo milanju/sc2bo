@@ -55,9 +55,7 @@ Template.editBo.helpers({
   'clClass': function() {
     getBo = function() {
       function compare(a, b) {
-        a.time = String(a.time).replace(':', '.');
-        b.time = String(b.time).replace(':', '.');
-        return a.time - b.time;
+        return a.position - b.position;
       }
       var buildOrder = BuildOrders.findOne({_id: Session.get("activeBo")}).buildOrder;
       return buildOrder.sort(compare);
@@ -68,6 +66,7 @@ Template.editBo.helpers({
     var playerTime = Session.get("playerTime");
     var difference;
     var closestTime = 0;
+    console.log("hello");
     for (var i = 0; i < buildOrder.length; i++) {
       difference = playerTime - buildOrder[i].time;
       if(difference < 0) difference = -difference;
