@@ -47,7 +47,13 @@ Template.editBo.helpers({
   },
   'timer': function() {
     var pTime = parseInt(Session.get("playerTime"));
-    return Math.floor(pTime / 60) + ":" + pTime % 60;
+    var first = Math.floor(pTime / 60);
+    var second = pTime % 60;
+
+    if(first < 10) first = "0" + first;
+    if(second < 10) second = "0" + second;
+
+    return first + ":" + second;
   },
   'clClass': function() {
     getBo = function() {
