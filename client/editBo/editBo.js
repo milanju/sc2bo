@@ -10,9 +10,9 @@ Template.editBo.created = function() {
   Session.set("actual", {command: "none"});
   if(bo.buildOrder[0]) Session.set("next", {command: bo.buildOrder[0].command});
   if(bo.timeStrategy === "real") {
-    Session.set("interval", Meteor.setInterval(playerClock, 1000));
+    Session.set("interval", Meteor.setInterval(playerClock, 1000)); // Real Time (lotv)
   } else {
-    Session.set("interval", Meteor.setInterval(playerClock, 714));
+    Session.set("interval", Meteor.setInterval(playerClock, 714)); // Blizzard Time (hots)
   }
 };
 
@@ -28,18 +28,21 @@ Template.editBo.helpers({
     return buildOrder.sort(compare);
   },
   'last': function() {
+    // animate
     $('.last-command').addClass('animated tada').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
       $('.last-command').removeClass('animated tada');
-      });
+    });
     return Session.get("last");
   },
   'actual': function() {
+    // animate
     $('.actual-command').addClass('animated tada').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
       $('.actual-command').removeClass('animated tada');
-      });
+    })
     return Session.get("actual");
   },
   'next': function() {
+    // animate
     $('.next-command').addClass('animated tada').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
       $('.next-command').removeClass('animated tada');
       });
