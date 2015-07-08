@@ -1,7 +1,6 @@
 playerClock = function() {
   if(Session.get("playerStatus") === "play"){
     Session.set("playerTime", Session.get("playerTime")+1);
-    console.log(Session.get("playerTime"));
   }
 };
 
@@ -11,10 +10,8 @@ Template.editBo.created = function() {
   Session.set("actual", {command: "none"});
   if(bo.buildOrder[0]) Session.set("next", {command: bo.buildOrder[0].command});
   if(bo.timeStrategy === "real") {
-    console.log("real");
     Session.set("interval", Meteor.setInterval(playerClock, 1000));
   } else {
-    console.log("blizzard");
     Session.set("interval", Meteor.setInterval(playerClock, 714));
   }
 };
@@ -66,7 +63,6 @@ Template.editBo.helpers({
     var playerTime = Session.get("playerTime");
     var difference;
     var closestTime = 0;
-    console.log("hello");
     for (var i = 0; i < buildOrder.length; i++) {
       difference = playerTime - buildOrder[i].time;
       if(difference < 0) difference = -difference;
@@ -86,13 +82,17 @@ Template.editBo.helpers({
     }
   },
   'convertedTime': function() {
-    return Math.floor(this.time / 60) + ":" + this.time % 60;
+    var first = Math.floor(this.time / 60);
+    var second = this.time % 60;
+    if(first < 10) first = "0" + first;
+    if(second < 10) second = "0" + second;
+
+    return first + ":" + second;
   }
 });
 
 Template.editBo.events({
   'submit #add-new-command': function(event) {
-    console.log("trigger");
     var activeBo = BuildOrders.findOne({_id: Session.get("activeBo")});
     var buildOrder = activeBo.buildOrder;
     var timeArray = event.target.time.value.split(":");
@@ -116,11 +116,9 @@ Template.editBo.events({
   },
   'click #play-bo': function(event) {
     Session.set("playerStatus", "play");
-    console.log("play");
   },
   'click #pause-bo': function(event) {
     Session.set("playerStatus", "pause");
-    console.log("pause");
   },
   'click #stop-bo': function(event) {
     var bo = BuildOrders.findOne({_id: Session.get("activeBo")}).buildOrder;
@@ -130,16 +128,13 @@ Template.editBo.events({
     Session.set("last", {command: "none"});
     Session.set("actual", {command: "none"});
     if(bo[0]) Session.set("next", {command: bo[0].command});
-    console.log("stop");
   },
   'click .remove-command': function(event) {
     var buildOrder = BuildOrders.findOne({_id: Session.get("activeBo")});
     var buildOrderArray = buildOrder.buildOrder;
-    console.log(buildOrderArray);
     for(var i = buildOrderArray.length -1; i >= 0; i--) {
       if(buildOrderArray[i]._id === this._id){
         buildOrderArray.splice(i, 1);
-        //console.log(buildOrderArray[i]._id + " //// " + this._id);
       }
     }
     BuildOrders.update({_id: Session.get("activeBo")}, {$set: {buildOrder: buildOrderArray}});
@@ -152,7 +147,6 @@ Template.editBo.events({
     var buildOrderArray = buildOrder.buildOrder;
     for(var i = buildOrderArray.length - 1; i >= 0; i--) {
       if((i != 0) && (buildOrderArray[i]._id === this._id)){
-        console.log("move " + i + " to " + (i-1));
         buildOrderArray[i].position = buildOrderArray[i].position - 1;
         buildOrderArray[i-1].position = buildOrderArray[i-1].position + 1;
       }
@@ -168,7 +162,6 @@ Template.editBo.events({
     var buildOrderArray = buildOrder.buildOrder;
     for(var i = buildOrderArray.length - 1; i >= 0; i--) {
       if((buildOrderArray[i] != buildOrderArray.length - 1) &&(buildOrderArray[i]._id === this._id)){
-        console.log("move " + i + " to " + (i+1));
         buildOrderArray[i].position = buildOrderArray[i].position + 1;
         buildOrderArray[i+1].position = buildOrderArray[i+1].position - 1;
       }
