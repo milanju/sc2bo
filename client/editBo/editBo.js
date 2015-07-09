@@ -97,6 +97,19 @@ Template.editBo.helpers({
     if(second < 10) second = "0" + second;
 
     return first + ":" + second;
+  },
+  'gameMode': function() {
+    var buildOrder = BuildOrders.findOne({_id: Session.get("activeBo")});
+    if(buildOrder.timeStrategy === "real") return "LotV"
+    else return "HotS";
+  },
+  'pRace': function() {
+    var buildOrder = BuildOrders.findOne({_id: Session.get("activeBo")});
+    return buildOrder.playerRace.charAt(0).toUpperCase() + buildOrder.playerRace.slice(1);
+  },
+  'oRace': function() {
+    var buildOrder = BuildOrders.findOne({_id: Session.get("activeBo")});
+    return buildOrder.opponentRace.charAt(0).toUpperCase() + buildOrder.opponentRace.slice(1);
   }
 });
 

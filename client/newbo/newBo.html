@@ -9,6 +9,20 @@
         <input type="text" id="new-bo-description" class="new-bo-description">
         <label for="new-bo-description">Description</label>
       </div>
+      <label>Select Player Race</label>
+      <select class="browser-default">
+        <option value="" disabled selected>Select Player Race</option>
+        <option value="Terran">Terran</option>
+        <option value="Protoss">Protoss</option>
+        <option value="Zerg">Zerg</option>
+      </select>
+      <label>Select Opponent Race</label>
+      <select class="browser-default">
+        <option value="" disabled selected>Select Opponent Race</option>
+        <option value="Terran">Terran</option>
+        <option value="Protoss">Protoss</option>
+        <option value="Zerg">Zerg</option>
+      </select>
       <p>
         <input name="group1" type="radio" id="time-1" checked>
         <label for="time-1">hots time (blizzard seconds)</label>
@@ -16,6 +30,14 @@
       <p>
         <input name="group1" type="radio" id="time-2">
         <label for="time-2">lotv time (real seconds)</label>
+      </p>
+      <p>
+        <input name="group2" type="radio" id="privacy-1" checked>
+        <label for="privacy-1">Private Build Order Build Order</label>
+      </p>
+      <p>
+        <input name="group2" type="radio" id="privacy-2">
+        <label for="privacy-2">Public Build Order</label>
       </p>
       <button type="submit" class="new-bo-submit waves-effect waves-light btn">Submit</button>
     </form>

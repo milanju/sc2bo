@@ -1,3 +1,3 @@
 Meteor.publish('buildOrders', function() {
-  return BuildOrders.find({userId: this.userId});
+  return BuildOrders.find({$or: [{userId: this.userId}, {privacy: "public"}]});
 });
