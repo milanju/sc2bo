@@ -7,16 +7,21 @@
   </head>
   <body>
     <div class="container">
-      <nav>
-        <div class="nav-wrapper">
-          <a href="#" id="logo" class="brand-logo">StarCraft 2 Buildorder Tool</a>
-          <ul class="right">{{> atNavButton}}</ul>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-          </ul>
-        </div>
-      </nav>
-      {{> atForm}}
-      {{> main}}
+      <header>
+        <nav>
+          <div class="nav-wrapper">
+            <a href="#" id="logo" class="left brand-logo">sc2bo</a>
+            <ul class="right">{{> atNavButton}}</ul>
+            <ul id="nav-mobile" class="hide-on-med-and-down">
+              <li><a href="#" id="logo" class="center brand-logo">StarCraft 2 Buildorder Tool</a></li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <main>
+        {{> atForm}}
+        {{> main}}
+      </main>
     </div>
   </body>
 </template>
