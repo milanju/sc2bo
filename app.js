@@ -11,6 +11,13 @@ if (Meteor.isClient) {
       Meteor.clearInterval(Session.get("interval"));
     }
   });
+
+  Template.home.helpers({
+    'buildOrders': function() {
+      return BuildOrders.find({});
+    }
+  });
+  
 }
 
 if (Meteor.isServer) {
