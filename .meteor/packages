@@ -5,13 +5,5 @@
 # but you can also edit it by hand.
 
 meteor-platform
-accounts-password
-accounts-ui
-natestrauser:animate-css
-percolate:momentum
-jquery
-materialize:materialize
-fourseven:scss
-useraccounts:materialize
-useraccounts:core
-fortawesome:fontawesome
+autopublish
+insecure
