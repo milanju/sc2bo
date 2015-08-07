@@ -1,0 +1,46 @@
+<template name="buildOrderNew">
+  <div class="card-panel component-card">
+    <h4>New Build Order</h4>
+    <form id="new-bo-form" class="row">
+      <div class="col m4 s12">
+      <label>Privacy</label>
+        <select class="browser-default">
+          <option value="public" selected>Public</option>
+          <option value="unlisted">Unlisted</option>
+          <option value="private">Private</option>
+        </select>
+      </div>
+      <div class="col m4 s12">
+      <label>Matchup</label>
+        <select class="browser-default">
+          <option value="PvP" selected>PvP</option>
+          <option value="PvT">PvT</option>
+          <option value="PvP">PvP</option>
+          <option value="TvP">TvP</option>
+          <option value="TvT">TvT</option>
+          <option value="TvZ">TvZ</option>
+          <option value="ZvP">ZvP</option>
+          <option value="ZvT">ZvT</option>
+          <option value="ZvZ">ZvZ</option>
+        </select>
+      </div>
+      <div class="col m4 s12">
+      <label>Expansion</label>
+        <select class="browser-default">
+          <option value="HotS" selected>HotS</option>
+          <option value="LotV">LotV</option>
+          <option value="WoL">WoL</option>
+        </select>
+      </div>
+      <div class="input-field col s12">
+        <input id="new-bo-title" type="text" class="validate">
+        <label for="new-bo-title">Title</label>
+      </div>
+      <div class="col s12">
+        <button class="btn">
+          Next
+        </button>
+      </div>
+    </form>
+  </div>
+</template>

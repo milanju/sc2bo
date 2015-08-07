@@ -1,0 +1,47 @@
+<template name="buildOrder">
+  {{#with buildOrder}}
+    <div class="card-panel component-card">
+      <div class="row">
+        <div class="col s12">
+          <div class="bo-tool-row row">
+            <div class="col s12">
+              {{> buildOrderListed}}
+            </div>
+            <div class="col s12">
+              <div class="right valign-wrapper">
+                {{#if currentUser}}
+                  {{> favoriteButton}}
+                {{/if}}
+                {{#if isOwner}}
+                  <button class="waves-effect waves-light btn edit-bo">Edit</button>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col s12">
+          <div class="row">
+            <div class="col s12">
+              {{this.description}}
+            </div>
+          </div>
+        </div>
+        <div class="col s12">
+          <div class="row">
+            <div class="col s12">
+              <table class="bo-table">
+                <tbody>
+                {{#each this.bo}}
+                  <tr>
+                    <td class="bold center">{{this.supply}}</td><td class="td-action">{{this.action}}</td>
+                  </tr>
+                {{/each}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/with}}
+</template>

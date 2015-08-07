@@ -1,0 +1,15 @@
+<template name="buildOrderListed">
+  <div class="row valign-wrapper grey lighten-3">
+    <div class="col listed-bo-votes center">
+      <a href="" onclick="return false;"><i class="fa fa-arrow-up upvote {{upvoted}}"></i></a>
+      <div class="{{upvoted}} {{downvoted}}">{{this.score}}</div>
+      <a href="" onclick="return false"><i class="fa fa-arrow-down downvote {{downvoted}}"></i></a>
+    </div>
+    <div class="col">
+      [{{this.matchup}}]
+      {{#if unlisted}}[unlisted]{{/if}}
+      {{#if private}}[private]{{/if}}
+      <a href="/bo/{{this.slug}}">{{this.title}}</a>
+    </div>
+  </div>
+</template>

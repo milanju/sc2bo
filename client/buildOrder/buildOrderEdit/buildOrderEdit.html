@@ -1,0 +1,94 @@
+<template name="buildOrderEdit">
+  {{#if Template.subscriptionsReady}}
+    {{#with buildOrder}}
+      <div class="card-panel component-card">
+        <h4>Edit Build Order</h4>
+        <div class="row">
+          <div id="edit-bo-form" class="col s12">
+            <div class="row">
+              <div class="col m4 s12">
+                <label>Privacy</label>
+                <select id="edit-bo-privacy" class="browser-default">
+                  <option value="public" {{privacySelected "public"}}>Public</option>
+                  <option value="unlisted" {{privacySelected "unlisted"}}>Unlisted</option>
+                  <option value="private" {{privacySelected "private"}}>Private</option>
+                </select>
+              </div>
+              <div class="col m4 s12">
+                <label>Matchup</label>
+                <select id="edit-bo-matchup" class="browser-default">
+                  <option value="PvP" {{matchupSelected "PvP"}}>PvP</option>
+                  <option value="PvT" {{matchupSelected "PvT"}}>PvT</option>
+                  <option value="PvP" {{matchupSelected "PvP"}}>PvP</option>
+                  <option value="TvP" {{matchupSelected "TvP"}}>TvP</option>
+                  <option value="TvT" {{matchupSelected "TvT"}}>TvT</option>
+                  <option value="TvZ" {{matchupSelected "TvZ"}}>TvZ</option>
+                  <option value="ZvP" {{matchupSelected "ZvP"}}>ZvP</option>
+                  <option value="ZvT" {{matchupSelected "ZvT"}}>ZvT</option>
+                  <option value="ZvZ" {{matchupSelected "ZvZ"}}>ZvZ</option>
+                </select>
+              </div>
+              <div class="col m4 s12">
+                <label>Expansion</label>
+                <select id="edit-bo-expansion" class="browser-default">
+                  <option value="HotS" {{expansionSelected "HotS"}}>HotS</option>
+                  <option value="LotV" {{expansionSelected "LotV"}}>LotV</option>
+                  <option value="WoL" {{expansionSelected "WoL"}}>WoL</option>
+                </select>
+              </div>
+              <div class="input-field col s12">
+                <input value="{{this.title}}" id="edit-bo-title" type="text" class="validate">
+                <label for="edit-bo-title" class="active">Title</label>
+              </div>
+              <div class="input-field col s12">
+                <textarea value="{{this.description}}" id="edit-bo-description" class="materialize-textarea validate"></textarea>
+                <label for="edit-bo-description" class="active">Description</label>
+              </div>
+              <form id="edit-bo-add-step">
+                <div class="input-field col s2">
+                  <input id="edit-bo-add-supply" type="text" class="validate">
+                  <label for="edit-bo-add-supply">Supply</label>
+                </div>
+                <div class="input-field col s8 m9">
+                  <input id="edit-bo-add-action" type="text" class="validate">
+                  <label for="edit-bo-add-action">Action</label>
+                </div>
+                <div class="input-field col s2 m1">
+                  <div class="row">
+                    <button type="submit" class="waves-effect waves-light btn col s12">+</button>
+                  </div>
+                </div>
+              </form>
+              <div class="col s12">
+                <table>
+                  <tbody>
+                    {{#each buildOrderSteps}}
+                      <tr>
+                        <td class="edit-bo-controls">
+                          <a href="#" onclick=""><i class="fa fa-trash delete-step"></i></a>
+                          <a href="#" onclick=""><i class="fa fa-arrow-up move-up-step"></i></a>
+                          <a href="#" onclick=""><i class="fa fa-arrow-down move-down-step"></i></a>
+                        </td>
+                        <td class="bold">{{this.supply}}</td>
+                        <td>{{this.action}}</td>
+                      </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+              <div class="col s12">
+                <button id="edit-bo-submit" class="waves-effect waves-light btn">
+                  Save & Publish
+                </button>
+                <button id="edit-bo-delete" class="waves-effect waves-light btn red darken-3 right">
+                  Delete
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/with}}
+  {{/if}}
+</template>

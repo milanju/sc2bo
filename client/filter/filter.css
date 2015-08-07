@@ -1,0 +1,14 @@
+.filtered {
+  background-color: #EEEEEE;
+  color: #505050;
+}
+
+.filtered:focus {
+  background-color: #EEEEEE;
+  color: #505050;
+}
+
+.filtered:hover {
+  background-color: #EEEEEE;
+  color: #505050;
+}

@@ -1,0 +1,14 @@
+.listed-bo-votes {
+  width: 50px;
+}
+
+.upvote, .downvote {
+  color: #808080;
+}
+.upvoted {
+  color: #e64a19 !important;
+}
+
+.downvoted {
+  color: #303f9f !important;
+}

@@ -1,0 +1,17 @@
+<template name="filter">
+  <div class="row">
+    <div class="col m5 s12 center">
+      <button value="protoss" class="btn small-button player-race-btn {{playerFilter 'protoss'}}">Protoss</button>
+      <button value="terran" class="btn small-button player-race-btn {{playerFilter 'terran'}}">Terran</button>
+      <button value="zerg" class="btn small-button player-race-btn {{playerFilter 'zerg'}}">Zerg</button>
+    </div>
+    <div class="col m2 s12 center">
+    vs.
+    </div>
+    <div class="col m5 s12 center">
+      <button value="protoss" class="btn small-button opp-race-btn opp-race-btn {{oppFilter 'protoss'}}">Protoss</button>
+      <button value="terran" class="btn small-button opp-race-btn opp-race-btn {{oppFilter 'terran'}}">Terran</button>
+      <button value="zerg" class="btn small-button opp-race-btn opp-race-btn {{oppFilter 'zerg'}}">Zerg</button>
+    </div>
+  </div>
+</template>
