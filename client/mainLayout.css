@@ -1,3 +1,24 @@
-.login-button {
-  margin-right: 10px;
+footer.card-panel {
+  background-color: #303030;
+  color: #dddddd;
+  margin-top: 0px;
+}
+
+.login-register-card {
+  background-color: #37474f;
+  color: #EEEEEE;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.footer {
+  position: relative;
+}
+
+.footer-img {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 0;
+  left: 0;
 }

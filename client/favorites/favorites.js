@@ -1,6 +1,8 @@
 Template.favorites.helpers({
   buildOrders: function() {
     var matchups = [];
+    var expansion = "HotS";
+    var sort = {score: -1};
     var favorites = Meteor.user().favorites;
     // Filter Protoss Matchups
     if(!Session.get("filter-player-protoss")) {
@@ -40,6 +42,13 @@ Template.favorites.helpers({
         matchups.push("ZvZ");
       }
     }
-    return BuildOrders.find({_id: {$in: favorites}, matchup: {$in: matchups}}, {sort: {score: -1}});
+    if(Session.get("filter-exp-HotS")) expansion = "HotS";
+    if(Session.get("filter-exp-LotV")) expansion = "LotV";
+    if(Session.get("filter-exp-WoL")) expansion = "WoL";
+
+    if(Session.get("sort-top")) sort = {score: -1};
+    if(Session.get("sort-new")) sort = {createdAt: -1};
+
+    return BuildOrders.find({_id: {$in: favorites}, published: "true", expansion: expansion, matchup: {$in: matchups}}, {sort: sort});
   }
 });

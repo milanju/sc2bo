@@ -1,0 +1,10 @@
+<template name="mod">
+  {{#if isInRole 'moderator,admin'}}
+  <div class="card-panel component-card">
+    <h4>Mod Panel</h4>
+    <a href="/mod/users">Manage Users</a>
+  </div>
+  {{else}}
+    {{> login}}
+  {{/if}}
+</template>

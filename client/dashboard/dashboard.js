@@ -1,6 +1,8 @@
 Template.dashboard.helpers({
   buildOrders: function() {
     var matchups = [];
+    var expansion = "HotS";
+    var sort = {score: -1};
 
     // Filter Protoss Matchups
     if(!Session.get("filter-player-protoss")) {
@@ -40,7 +42,14 @@ Template.dashboard.helpers({
         matchups.push("ZvZ");
       }
     }
-    return BuildOrders.find({userId: Meteor.userId(), matchup: {$in: matchups}}, {sort: {score: -1}});
+    if(Session.get("filter-exp-HotS")) expansion = "HotS";
+    if(Session.get("filter-exp-LotV")) expansion = "LotV";
+    if(Session.get("filter-exp-WoL")) expansion = "WoL";
+
+    if(Session.get("sort-top")) sort = {score: -1};
+    if(Session.get("sort-new")) sort = {createdAt: -1};
+
+    return BuildOrders.find({userId: Meteor.userId(), $or: [{published: "true"}, {published: "false"}], expansion: expansion, matchup: {$in: matchups}}, {sort: sort});
   }
 });
 

@@ -1,0 +1,8 @@
+<template name="userButton">
+  {{#if currentUser}}
+    <a href="" onclick="return false;" class="logout-btn waves-effect waves-red">Logout</a>
+  {{else}}
+    <a href="/login" class="waves-effect waves-red">Login</a>
+  {{/if}}
+
+</template>

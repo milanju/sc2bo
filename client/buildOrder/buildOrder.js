@@ -1,16 +1,29 @@
 Template.buildOrder.helpers({
   buildOrder: function() {
-    return BuildOrders.findOne({slug: FlowRouter.current().params.slug});
+    return BuildOrders.findOne({slug: FlowRouter.getParam('slug')});
   },
-  isOwner: function() {
-    if(this.userId === Meteor.userId()){
-      return true;
+  replaysExist: function() {
+    if(this.replays && this.replays.length > 0) return true;
+    return false;
+  },
+  videosExist: function() {
+    if(this.videos && this.videos.length > 0) return true;
+    return false;
+  },
+  getYoutubeLink: function() {
+    var link = this.link;
+    var id = link.split("watch?v=")[1];
+    return "//www.youtube.com/embed/" + id + "?rel=0;autohide=1";
+  },
+  steps: function() {
+    var bo = this.bo;
+    function compare(a,b) {
+      if(a.position < b.position)
+        return -1;
+      if(a.position > b.position)
+        return 1;
+      return 0;
     }
-  }
-});
-
-Template.buildOrder.events({
-  'click .edit-bo': function() {
-    FlowRouter.go("/bo/" + FlowRouter.current().params.slug + "/edit")
+    return bo.sort(compare);
   }
 });

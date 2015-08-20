@@ -1,16 +1,27 @@
 <template name="dashboard">
-  <div class="card-panel component-card">
-    <div>
-      {{> filter}}
-      <div class="row bo-list-title">
-        <div class="col s12">
-          <h5>My BuildOrders</h5>
+  {{#if currentUser}}
+    <div class="card-panel component-card">
+      <div>
+        {{> filter}}
+        <div class="row bo-list-title">
+          <div class="col s12">
+            <h5>My BuildOrders</h5>
+          </div>
+          {{> newBoButton}}
         </div>
-        {{> newBoButton}}
+        {{#if isReady "myBuildOrders"}}
+          <div>
+            {{#each buildOrders}}
+              {{> buildOrderListed}}
+            {{/each}}
+          </div>
+        {{else}}
+          {{> loading}}
+          {{> hideFooter}}
+        {{/if}}
       </div>
-      {{#each buildOrders}}
-        {{> buildOrderListed}}
-      {{/each}}
     </div>
-  </div>
+  {{else}}
+    {{> login}}
+  {{/if}}
 </template>

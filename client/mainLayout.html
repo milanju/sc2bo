@@ -1,4 +1,9 @@
 <template name="mainLayout">
+  {{#if styleDark}}
+    <head>
+      <link rel="stylesheet" href="/styles/dark.css">
+    </head>
+  {{/if}}
   <div class="container">
     <nav>
       <div class="nav-wrapper">
@@ -16,11 +21,51 @@
           <li><a href="/dashboard" class="waves-effect waves-red">Dashboard</a></li>
           <li><a href="/favorites" class="waves-effect waves-red">Favorites</a></li>
         </ul>
-        <a class="right login-button">
-          {{> loginButtons}}
-        </a>
+        <ul class="right valign-wrapper">
+          <!--
+          {{#if currentUser}}
+            <li><a class="waves-effect waves-red">
+              logout
+            </a></li>
+          {{else}}
+            <li><a class="waves-effect waves-red">
+              login/register
+            </a></li>
+          {{/if}}-->
+          <li><div class="spinner-wrapper valign-wrapper">
+            {{> spinner}}
+          </div></li>
+          <li>{{> userButton}}</li>
+        </ul>
       </div>
     </nav>
+    <!--
+    <div class="card-panel login-register-card">
+      {{> loginRegisterForm}}
+    </div>-->
+    {{> modBar}}
     {{> Template.dynamic template=main}}
+    <footer class="card-panel footer">
+      <div class="row">
+        <div class="col s12">
+        </div>
+      </div>
+      <div class="footer-wrapper">
+        © SC2BO
+        <div class="footer-img">
+          <img src="http://us.blizzard.com/static/_images/logos/starcraft2-lotv.png" alt="" />
+        </div>
+        <div class="right">
+          <div class="switch style-switch">
+            <label>
+              Off
+              <input type="checkbox" {{styleLight}}>
+              <span class="lever"></span>
+              On
+            </label>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>

@@ -29,15 +29,6 @@ nav ul a {
   width: 80px;
 }
 
-.small-a {
-  font-size: 12px;
-  height: 20px;
-  line-height: 20px;
-  padding-left: 4px;
-  padding-right: 4px;
-  width: 40px;
-}
-
 .bo-list-title {
   position: relative;
   margin-bottom: 0;
@@ -45,4 +36,16 @@ nav ul a {
 
 .bo-table tbody tr td {
   padding: 4px;
+}
+
+.item-panel {
+  background-color: #EEEEEE;
+}
+
+.item-row {
+  margin: 4px;
+}
+
+.bo-link {
+  word-wrap: break-word;
 }

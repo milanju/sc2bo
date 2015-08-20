@@ -33,13 +33,14 @@
         </select>
       </div>
       <div class="input-field col s12">
-        <input id="new-bo-title" type="text" class="validate">
+        <input id="new-bo-title" type="text">
         <label for="new-bo-title">Title</label>
       </div>
-      <div class="col s12">
-        <button class="btn">
+      <div class="col s12 valign-wrapper">
+        <button id="new-bo-btn" class="btn">
           Next
         </button>
+        {{> buildOrderNewSpinner}}
       </div>
     </form>
   </div>

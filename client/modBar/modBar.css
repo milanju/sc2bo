@@ -1,0 +1,14 @@
+.modBar .card-panel {
+  background-color: #455a64;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 4px;
+}
+
+.modBar .card-panel a {
+  color: #eeeeee;
+}
+
+.modBar .card-panel a:hover {
+  color: #ef5350;
+}

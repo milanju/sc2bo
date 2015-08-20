@@ -1,3 +1,7 @@
+Template.buildOrderListed.onRendered(function() {
+  $('.tooltipped').tooltip({delay: 50});
+});
+
 Template.buildOrderListed.helpers({
   'upvoted': function() {
     if(!Meteor.user()) return;

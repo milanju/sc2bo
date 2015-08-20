@@ -1,0 +1,42 @@
+body {
+  background-color: #303030;
+  color: #dddddd;
+}
+
+select {
+  background-color: #363636;
+  color: #dddddd;
+  border-color: #424242
+}
+
+select:active {
+}
+
+.component-card {
+  background-color: #424242 !important;
+}
+
+.listed-bo-row {
+  background-color: #303030;
+}
+
+.downvoted {
+  color: #5c6bc0;
+}
+
+.card-panel {
+  background-color: #303030;
+  border-color: red;
+}
+
+.listed-bo-toolbar a {
+  color: #bbbbbb;
+}
+
+.listed-bo-author {
+  color: #bbbbbb;
+}
+
+table.hoverable > tbody > tr:hover {
+  background-color: #343434;
+}

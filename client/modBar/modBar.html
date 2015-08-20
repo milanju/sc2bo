@@ -1,0 +1,12 @@
+<template name="modBar">
+  {{#if isInRole 'admin,moderator'}}
+    <div class="modBar">
+      <div class="card-panel">
+        {{#if isInRole 'admin'}}
+          <a href="/admin">Admin</a>
+        {{/if}}
+        <a href="/mod">Mod</a>
+      </div>
+    </div>
+  {{/if}}
+</template>

@@ -1,14 +1,35 @@
+.listed-bo-row {
+  background-color: #EEEEEE;
+  margin-bottom: 6px;
+  position: relative;
+}
+
 .listed-bo-votes {
   width: 50px;
 }
 
+.listed-bo-toolbar {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  font-size: 13px;
+}
+
+.listed-bo-author {
+  font-size: 13px;
+  color: #505050;
+}
+
+.listed-bo-toolbar a {
+  color: #505050;
+}
 .upvote, .downvote {
   color: #808080;
 }
 .upvoted {
-  color: #e64a19 !important;
+  color: #e64a19;
 }
 
 .downvoted {
-  color: #303f9f !important;
+  color: #303f9f;
 }

@@ -11,7 +11,7 @@ Template.favoriteButton.helpers({
     if(contains(Meteor.user().favorites, this._id)) {
       return "favorite";
     } else {
-      return "";
+      return false;
     }
   }
 });
@@ -19,5 +19,6 @@ Template.favoriteButton.helpers({
 Template.favoriteButton.events({
   'click .favorite-button': function() {
     Meteor.call("toggleFavorite", this._id);
+    return false;
   }
 });

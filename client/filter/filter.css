@@ -1,5 +1,5 @@
 .filtered {
-  background-color: #EEEEEE;
+  background-color: #EEEEEE !important;
   color: #505050;
 }
 
@@ -11,4 +11,29 @@
 .filtered:hover {
   background-color: #EEEEEE;
   color: #505050;
+}
+
+.hots-btn, .hots-btn:focus {
+  background-color: #8e24aa;
+}
+
+.hots-btn:hover {
+  background-color: #9c27b0;
+}
+
+.lotv-btn, .lotv-btn:focus{
+  background-color: #fdd835;
+  color: #000;
+}
+
+.lotv-btn:hover {
+  background-color: #ffeb3b;
+}
+
+.wol-btn, .wol-btn:focus{
+  background-color: #1e88e5;
+}
+
+.wol-btn:hover {
+  background-color: #2196f3;
 }

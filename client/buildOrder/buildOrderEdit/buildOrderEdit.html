@@ -37,20 +37,20 @@
                 </select>
               </div>
               <div class="input-field col s12">
-                <input value="{{this.title}}" id="edit-bo-title" type="text" class="validate">
+                <input value="{{this.title}}" id="edit-bo-title" type="text">
                 <label for="edit-bo-title" class="active">Title</label>
               </div>
               <div class="input-field col s12">
-                <textarea value="{{this.description}}" id="edit-bo-description" class="materialize-textarea validate"></textarea>
+                <textarea value="{{this.description}}" id="edit-bo-description" class="materialize-textarea "></textarea>
                 <label for="edit-bo-description" class="active">Description</label>
               </div>
               <form id="edit-bo-add-step">
                 <div class="input-field col s2">
-                  <input id="edit-bo-add-supply" type="text" class="validate">
+                  <input id="edit-bo-add-supply" type="text">
                   <label for="edit-bo-add-supply">Supply</label>
                 </div>
                 <div class="input-field col s8 m9">
-                  <input id="edit-bo-add-action" type="text" class="validate">
+                  <input id="edit-bo-add-action" type="text">
                   <label for="edit-bo-add-action">Action</label>
                 </div>
                 <div class="input-field col s2 m1">
@@ -65,9 +65,9 @@
                     {{#each buildOrderSteps}}
                       <tr>
                         <td class="edit-bo-controls">
-                          <a href="#" onclick=""><i class="fa fa-trash delete-step"></i></a>
-                          <a href="#" onclick=""><i class="fa fa-arrow-up move-up-step"></i></a>
-                          <a href="#" onclick=""><i class="fa fa-arrow-down move-down-step"></i></a>
+                          <a href="#" onclick="return false;"><i class="fa fa-trash delete-step"></i></a>
+                          <a href="#" onclick="return false;"><i class="fa fa-arrow-up move-up-step"></i></a>
+                          <a href="#" onclick="return false;"><i class="fa fa-arrow-down move-down-step"></i></a>
                         </td>
                         <td class="bold">{{this.supply}}</td>
                         <td>{{this.action}}</td>
@@ -76,7 +76,66 @@
                   </tbody>
                 </table>
               </div>
-              <div class="col s12">
+              <div class="input-field col s12">
+                <textarea value="{{this.appendix}}" id="edit-bo-appendix" class="materialize-textarea"></textarea>
+                <label for="edit-bo-appendix" class="active">Appendix</label>
+              </div>
+              <div class="input-field col s12">
+                <button id="edit-bo-add-replay" class="waves-effect waves-light btn">
+                  Add Replay
+                </button>
+              </div>
+              {{#each this.replays}}
+                <div class="col l4 m6 s12">
+                  <div class="card-panel">
+                    <div class="row">
+                      <h5 class="left">Replay</h5>
+                      <a class="btn-floating btn waves-effect waves-light red right edit-bo-delete-replay"><i class="material-icons">delete</i></a>
+                      <div class="input-field col s12">
+                        <input value="{{this.title}}" type="text" class="edit-bo-replay-title">
+                        <label for="edit-bo-replay-title" class="active">Title</label>
+                      </div>
+                      <div class="input-field col s12">
+                        <input value="{{this.link}}" type="text" class="edit-bo-replay-link">
+                        <label for="edit-bo-replay-link" class="active">Link</label>
+                      </div>
+                      <div class="input-field col s12">
+                        <textarea value="{{this.description}}" class="materialize-textarea edit-bo-replay-description"></textarea>
+                        <label for="edit-bo-replay-description" class="active">Description</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {{/each}}
+
+              <div class="input-field col s12">
+                <button id="edit-bo-add-video" class="waves-effect waves-light btn">
+                  Add Video
+                </button>
+              </div>
+              {{#each this.videos}}
+                <div class="col l4 m6 s12">
+                  <div class="card-panel">
+                    <div class="row">
+                      <h5 class="left">Video</h5>
+                      <a class="btn-floating btn waves-effect waves-light red right edit-bo-delete-video"><i class="material-icons">delete</i></a>
+                      <div class="input-field col s12">
+                        <input value="{{this.title}}" type="text" class="edit-bo-video-title">
+                        <label for="edit-bo-video-title" class="active">Title</label>
+                      </div>
+                      <div class="input-field col s12">
+                        <input value="{{this.link}}" type="text" class="edit-bo-video-link">
+                        <label for="edit-bo-video-link" class="active">Link</label>
+                      </div>
+                      <div class="input-field col s12">
+                        <textarea value="{{this.description}}" class="materialize-textarea edit-bo-video-description"></textarea>
+                        <label for="edit-bo-video-description" class="active">Description</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {{/each}}
+              <div class="input-field col s12">
                 <button id="edit-bo-submit" class="waves-effect waves-light btn">
                   Save & Publish
                 </button>
@@ -84,7 +143,6 @@
                   Delete
                 </button>
               </div>
-
             </div>
           </div>
         </div>

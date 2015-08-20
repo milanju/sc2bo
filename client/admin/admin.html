@@ -1,0 +1,9 @@
+<template name="admin">
+  {{#if isInRole 'admin'}}
+    <div class="card-panel component-card">
+      Hello admin : - )!
+    </div>
+  {{else}}
+    {{> login}}
+  {{/if}}
+</template>

@@ -1,5 +1,9 @@
 <template name="home">
   <div class="card-panel component-card">
+    {{#if subsReady}}
+    {{else}}
+      {{> loading}}
+    {{/if}}
     <div>
       {{> filter}}
       <div class="row bo-list-title">
@@ -8,9 +12,12 @@
         </div>
         {{> newBoButton}}
       </div>
-      {{#each buildOrders}}
-        {{> buildOrderListed}}
-      {{/each}}
+        <div>
+          {{#each buildOrders}}
+            {{> buildOrderListed}}
+          {{/each}}
+        </div>
+      <a class="home-load-more" href="" onclick="return false;">load more</a>
     </div>
   </div>
 </template>

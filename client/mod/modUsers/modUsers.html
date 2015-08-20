@@ -1,0 +1,43 @@
+<template name="modUsers">
+  {{#if isInRole 'admin'}}
+    <div class="card-panel component-card">
+      mod users
+      <table class="hoverable">
+        <thead>
+          <tr>
+            <th>
+              Username
+            </th>
+            <th>
+              Role
+            </th>
+            <td>
+              Actions
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each users}}
+            <tr>
+              <td>
+                {{this.username}}
+              </td>
+              <td>
+                {{role}}
+              </td>
+              <td>
+                {{#if banned}}
+                  <a href="" class="modUsersUnban">Unban</a>
+                {{else}}
+                  <a href="" class="modUsersBan">Ban</a>
+                {{/if}}
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  {{else}}
+    {{> login}}
+  {{/if}}
+</template>
