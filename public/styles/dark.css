@@ -1,5 +1,7 @@
 body {
   background-color: #303030;
+  /* Background pattern from subtlepatterns.com */
+  background-image: url("/img/pattern_diagmonds.png");
   color: #dddddd;
 }
 
@@ -10,6 +12,14 @@ select {
 }
 
 select:active {
+}
+
+.modal {
+  background-color: #303030;
+}
+
+.modal .modal-footer {
+  background-color: #303030;
 }
 
 .component-card {
@@ -37,6 +47,14 @@ select:active {
   color: #bbbbbb;
 }
 
+.listed-report {
+  background-color: #303030;
+}
+
 table.hoverable > tbody > tr:hover {
+  background-color: #343434;
+}
+
+.active-edit {
   background-color: #343434;
 }

@@ -1,7 +1,10 @@
 Meteor.publish("buildOrders", function(attributes) {
   return BuildOrders.find({
     $or: [
-      {userId: this.userId},
+      {$and: [
+        {published: {$ne: "deleted"}},
+        {userId: this.userId}
+      ]},
       {$and: [
         {published: "true"},
         {$or: [
@@ -13,14 +16,14 @@ Meteor.publish("buildOrders", function(attributes) {
   }, attributes);
 });
 
-Meteor.publish("favoriteBuildOrders", function() {
-  var favorites = []
-  if(this.userId){
-    var favorites = Meteor.users.findOne({_id: this.userId}).favorites;
-  }
+Meteor.publish("buildOrder", function(slug) {
   return BuildOrders.find({
+    slug: slug,
     $or: [
-      {userId: this.userId},
+      {$and: [
+        {published: {$ne: "deleted"}},
+        {userId: this.userId}
+      ]},
       {$and: [
         {published: "true"},
         {$or: [
@@ -29,7 +32,29 @@ Meteor.publish("favoriteBuildOrders", function() {
         ]}
       ]}
     ]
-  }, {_id: {$in: favorites}});
+  });
+});
+
+Meteor.publish("favoriteBuildOrders", function() {
+  var favorites = []
+  if(this.userId){
+    var favorites = Meteor.users.findOne({_id: this.userId}).favorites;
+  }
+  return BuildOrders.find({
+    $or: [
+      {$and: [
+        {published: {$ne: "deleted"}},
+        {userId: this.userId}
+      ]},
+      {$and: [
+        {published: "true"},
+        {$or: [
+          {privacy: "public"},
+          {privacy: "unlisted"}
+        ]}
+      ]}
+    ], _id: {$in: favorites}
+  });
 });
 
 Meteor.publish("publicBuildOrders", function(limit, sort, expansion, matchups) {
@@ -43,7 +68,8 @@ Meteor.publish("publicBuildOrders", function(limit, sort, expansion, matchups) {
 
 Meteor.publish("myBuildOrders", function() {
   return BuildOrders.find({
-    userId: this.userId
+    userId: this.userId,
+    $or: [{published: "true"}, {published: "false"}]
   });
 });
 
@@ -60,7 +86,40 @@ Meteor.publish("allUsers", function() {
   if(Roles.userIsInRole(this.userId, ['admin', 'moderator'])) {
     return Meteor.users.find();
   }
-})
+});
+
+Meteor.publish("openReports", function() {
+  if(Roles.userIsInRole(this.userId, ['admin', 'moderator'])) {
+    return Reports.find({
+      solved: false
+    });
+  }
+});
+
+Meteor.publish("closedReports", function() {
+  if(Roles.userIsInRole(this.userId, ['admin', 'moderator'])) {
+    return Reports.find({
+      solved: true
+    });
+  }
+});
+
+Meteor.publish("openReportedBos", function() {
+  if(Roles.userIsInRole(this.userId, ['admin', 'moderator'])) {
+    var reports = Reports.find().fetch();
+    var boIds = [];
+    for(var i = 0; i < reports.length; i++) {
+      boIds.push(reports[i].boId);
+    }
+    return BuildOrders.find({_id: {$in: boIds}});
+  }
+});
+
+Meteor.publish("reportsForBo", function(boId) {
+  if(Roles.userIsInRole(this.userId, ['admin', 'moderator'])) {
+    return Reports.find({boId: boId});
+  }
+});
 
 Meteor.publish(null, function() {
   return Meteor.users.find({_id: this.userId}, {fields: {favorites: 1, upvotes: 1, downvotes: 1, style: 1, admin: 1, isBanned: 1}});

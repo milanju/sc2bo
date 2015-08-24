@@ -1,6 +1,6 @@
 <template name="favorites">
-  {{#if currentUser}}
-    <div class="card-panel component-card">
+  <div class="card-panel component-card">
+    {{#if currentUser}}
       <div>
         {{> filter}}
         {{#if currentUser}}
@@ -22,8 +22,8 @@
           {{/if}}
         {{/if}}
       </div>
-    </div>
-  {{else}}
-    {{> login}}
-  {{/if}}
+    {{else}}
+      {{> login}}
+    {{/if}}
+  </div>
 </template>

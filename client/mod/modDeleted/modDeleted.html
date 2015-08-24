@@ -1,24 +1,17 @@
-<template name="dashboard">
+<template name="modDeleted">
   <div class="card-panel component-card">
-    {{#if currentUser}}
+    {{#if isInRole 'admin, moderator'}}
       <div>
-        {{> filter}}
         <div class="row bo-list-title">
           <div class="col s12">
-            <h5>My BuildOrders</h5>
+            <h5>Deleted Build Orders</h5>
           </div>
-          {{> newBoButton}}
         </div>
-        {{#if isReady "myBuildOrders"}}
           <div>
             {{#each buildOrders}}
               {{> buildOrderListed}}
             {{/each}}
           </div>
-        {{else}}
-          {{> loading}}
-          {{> hideFooter}}
-        {{/if}}
       </div>
     {{else}}
       {{> login}}

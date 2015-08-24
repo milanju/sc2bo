@@ -1,43 +1,72 @@
 <template name="modUsers">
-  {{#if isInRole 'admin'}}
-    <div class="card-panel component-card">
-      mod users
-      <table class="hoverable">
-        <thead>
-          <tr>
-            <th>
-              Username
-            </th>
-            <th>
-              Role
-            </th>
-            <td>
-              Actions
-            </td>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each users}}
+  <div class="card-panel component-card">
+    {{#if isInRole 'admin, moderator'}}
+      <div>
+        <div class="row bo-list-title">
+          <div class="col s12">
+            <h5>Manager Users</h5>
+          </div>
+        </div>
+        <table class="hoverable">
+          <thead>
             <tr>
+              <th>
+                Username
+              </th>
+              <th>
+                Role
+              </th>
               <td>
-                {{this.username}}
-              </td>
-              <td>
-                {{role}}
-              </td>
-              <td>
-                {{#if banned}}
-                  <a href="" class="modUsersUnban">Unban</a>
-                {{else}}
-                  <a href="" class="modUsersBan">Ban</a>
-                {{/if}}
+                Actions
               </td>
             </tr>
-          {{/each}}
-        </tbody>
-      </table>
-    </div>
-  {{else}}
-    {{> login}}
-  {{/if}}
+          </thead>
+          <tbody>
+            {{#each users}}
+              <tr class="{{editingClass}}">
+                <td>
+                  {{#if editing}}
+                    <input type="text" id="{{this._id}}-username" value="{{this.username}}">
+                  {{else}}
+                    {{this.username}}
+                  {{/if}}
+                </td>
+                <td>
+                  {{#if editing}}
+                    {{#if validRoleSwitch}}
+                      <select class="browser-default" id="{{this._id}}-role">
+                        <option value="user" {{activeRole "user"}}>user</option>
+                        <option value="moderator" {{activeRole "moderator"}}>moderator</option>
+                      </select>
+                    {{else}}
+                      {{role}}
+                    {{/if}}
+                  {{else}}
+                    {{role}}
+                  {{/if}}
+                </td>
+                <td>
+                  {{#if editable}}
+                    {{#if editing}}
+                      <a href="" class="modUsersSave">save</a>
+                      <a href="" class="modUsersCancel">cancel</a>
+                    {{else}}
+                      <a href="" class="modUsersEdit">edit</a>
+                      {{#if banned}}
+                        <a href="" class="modUsersUnban">unban</a>
+                      {{else}}
+                        <a href="" class="modUsersBan">ban</a>
+                      {{/if}}
+                    {{/if}}
+                  {{/if}}
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    {{else}}
+      {{> login}}
+    {{/if}}
+  </div>
 </template>

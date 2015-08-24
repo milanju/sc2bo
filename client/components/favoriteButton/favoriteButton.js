@@ -1,15 +1,19 @@
 Template.favoriteButton.helpers({
   'favoriteClass': function() {
-    var contains = function(a, obj) {
-      for (var i = 0; i < a.length; i++) {
-          if (a[i] === obj) {
-              return true;
-          }
+    if(Meteor.user()) {
+      var contains = function(a, obj) {
+        for (var i = 0; i < a.length; i++) {
+            if (a[i] === obj) {
+                return true;
+            }
+        }
+        return false;
       }
-      return false;
-    }
-    if(contains(Meteor.user().favorites, this._id)) {
-      return "favorite";
+      if(contains(Meteor.user().favorites, this._id)) {
+        return "favorite";
+      } else {
+        return false;
+      }
     } else {
       return false;
     }
@@ -18,7 +22,14 @@ Template.favoriteButton.helpers({
 
 Template.favoriteButton.events({
   'click .favorite-button': function() {
-    Meteor.call("toggleFavorite", this._id);
+    if(Meteor.user()) {
+      Meteor.call("toggleFavorite", this._id);
+    } else {
+      $('#loginModal').openModal();
+      setTimeout(function() {
+        $('#login-username').focus();
+      }, 100);
+    }
     return false;
   }
 });

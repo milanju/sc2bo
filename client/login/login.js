@@ -10,6 +10,7 @@ Template.login.events({
       if(err) {
         Materialize.toast(err.reason, 4000);
       } else {
+        $('#loginModal').closeModal();
         var route = FlowRouter.current().route.name;
         if((route != "dashboard") && (route != "favorites")) {
           FlowRouter.go('home');
@@ -20,6 +21,11 @@ Template.login.events({
     return false;
   },
   'click .link-to-register-btn': function() {
-    FlowRouter.go('register');
+    $('#loginModal').closeModal();
+    $('#registerModal').openModal();
+    setTimeout(function() {
+      $('#register-username').focus();
+    }, 100);
+    return false;
   }
 });

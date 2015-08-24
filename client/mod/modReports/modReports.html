@@ -1,0 +1,22 @@
+<template name="modReports">
+  <div class="card-panel component-card">
+  {{#if isInRole 'admin, moderator'}}
+    <div>
+      <div class="row bo-list-title">
+        <div class="col s12">
+          <h5>Reported Build Orders</h5>
+        </div>
+      </div>
+        <div>
+          {{#each buildOrders}}
+            <div class="col s12">
+              {{> modReportedBoListed}}
+            </div>
+          {{/each}}
+        </div>
+    </div>
+  {{else}}
+    {{> login}}
+  {{/if}}
+  </div>
+</template>

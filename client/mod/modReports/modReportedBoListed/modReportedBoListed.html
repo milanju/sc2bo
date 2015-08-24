@@ -1,0 +1,34 @@
+<template name="modReportedBoListed">
+  {{#unless solved}}
+    <div class="row valign-wrapper listed-bo-row listed-report-row">
+      <div class="col">
+        [{{this.matchup}}]
+        {{#if unlisted}}[unlisted]{{/if}}
+        {{#if private}}[private]{{/if}}
+        {{#if deleted}}[deleted]{{/if}}
+        <a href="/bo/{{this.slug}}">{{this.title}}</a> by {{this.author}}
+        {{#if solved}}
+          <div class="solved-tag">[SOLVED]</div>
+        {{/if}}
+        <div>
+          <a href="" class="reported-count">Reported {{timesReported}} times</a>
+        </div>
+        <div class="listed-bo-toolbar">
+          <div class="right">
+            <a href="" class="close-reports">Close Reports</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div id="listed-reports-{{this._id}}" class="col s12 listed-reports-container">
+        {{#each reports}}
+            <div class="listed-report col s12">
+              <div class="report-author">Report by {{this.reporterName}}</div>
+              <div>Reason: {{this.reason}}</div>
+            </div>
+        {{/each}}
+      </div>
+    </div>
+  {{/unless}}
+</template>

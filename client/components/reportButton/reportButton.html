@@ -1,0 +1,20 @@
+<template name="reportButton">
+  <a href="" onclick="return false;" class="report-button">
+    report
+  </a>
+  <form class="report-form">
+    <div id="report-{{this._id}}" class="modal report-modal">
+      <div class="modal-content">
+        <h4>Report</h4>
+        <p>Build Order: {{this.title}} by {{this.author}}</p>
+        <div class="input-field col s12">
+          <input id="report-reason-{{this._id}}" type="text">
+          <label for="report-reason-{{this._id}}">Reason</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" id="report-submit-{{this._id}}" class="report-submit waves-effect waves-light btn red darken-4">Submit</button>
+      </div>
+    </div>
+  </form>
+</template>

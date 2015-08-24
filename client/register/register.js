@@ -22,7 +22,7 @@ Template.register.events({
         event.target[1].value = "";
         event.target[2].value = "";
       } else {
-        FlowRouter.go('home');
+        $('#registerModal').closeModal();
       }
     });
     return false;

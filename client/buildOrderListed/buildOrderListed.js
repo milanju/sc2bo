@@ -26,6 +26,10 @@ Template.buildOrderListed.helpers({
   'private': function() {
     if(this.privacy === "private") return true;
     return false;
+  },
+  'deleted': function() {
+    if(this.published === "deleted") return true;
+    return false;
   }
 });
 

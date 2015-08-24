@@ -2,7 +2,11 @@
   {{#if isInRole 'moderator,admin'}}
   <div class="card-panel component-card">
     <h4>Mod Panel</h4>
-    <a href="/mod/users">Manage Users</a>
+    <ul>
+      <li><a href="/mod/reports">Reported Build Orders</a></li>
+      <li><a href="/mod/users">Manage Users</a></li>
+      <li><a href="/mod/deleted">Deleted Build Orders</a></li>
+    </ul>
   </div>
   {{else}}
     {{> login}}

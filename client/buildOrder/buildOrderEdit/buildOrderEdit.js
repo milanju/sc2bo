@@ -1,10 +1,10 @@
 Template.buildOrderEdit.onCreated(function() {
-  this.subscribe('buildOrders', {slug: FlowRouter.getParam('slug')});
+  this.subscribe('buildOrder', FlowRouter.getParam('slug'));
 });
 
 Template.buildOrderEdit.helpers({
   buildOrder: function() {
-    return BuildOrders.findOne({slug: FlowRouter.getParam('slug')});
+    return BuildOrders.findOne({slug: FlowRouter.getParam('slug'), published: {$ne: "deleted"}});
   },
   buildOrderSteps: function() {
     function compare(a,b) {

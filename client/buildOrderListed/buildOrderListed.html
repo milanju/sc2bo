@@ -9,18 +9,17 @@
       [{{this.matchup}}]
       {{#if unlisted}}[unlisted]{{/if}}
       {{#if private}}[private]{{/if}}
+      {{#if deleted}}[deleted]{{/if}}
       <a href="/bo/{{this.slug}}">{{this.title}}</a> <div class="listed-bo-author">by {{this.author}}</div>
       <div class="listed-bo-toolbar">
         <div class="right">
+          {{#if deleted}}
+            {{> restoreButton}}
+          {{/if}}
           {{> editButton}}
           {{> favoriteButton}}
+          {{> reportButton}}
         </div>
-      </div>
-    </div>
-    <div class="listed-bo-toolbar">
-      <div class="right">
-        {{> editButton}}
-        {{> favoriteButton}}
       </div>
     </div>
   </div>

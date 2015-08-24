@@ -1,11 +1,9 @@
 <template name="favoriteButton">
-  {{#if currentUser}}
-    <a href="" onclick="return false;" class="favorite-button">
+  <a href="" onclick="return false;" class="favorite-button">
     {{#if favoriteClass}}
       unfavorite
     {{else}}
       favorite
     {{/if}}
-    </a>
-  {{/if}}
+  </a>
 </template>

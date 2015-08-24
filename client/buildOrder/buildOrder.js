@@ -1,6 +1,6 @@
 Template.buildOrder.helpers({
   buildOrder: function() {
-    return BuildOrders.findOne({slug: FlowRouter.getParam('slug')});
+    return BuildOrders.findOne({slug: FlowRouter.getParam('slug'), published: {$ne: "deleted"}});
   },
   replaysExist: function() {
     if(this.replays && this.replays.length > 0) return true;
