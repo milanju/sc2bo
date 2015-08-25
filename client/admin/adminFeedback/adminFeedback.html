@@ -1,0 +1,21 @@
+<template name="adminFeedback">
+  <div class="card-panel component-card">
+  {{#if isInRole 'admin'}}
+    <div>
+      <div class="row bo-list-title">
+        <div class="col s12">
+          <h5>Unread Feedback</h5>
+        </div>
+      </div>
+      <div>
+        {{#each unreadFeedback}}
+          {{> adminListedFeedback}}
+        {{/each}}
+      </div>
+      <a href="/admin/feedback/read">view already read Feedback</a>
+    </div>
+  {{else}}
+    {{> login}}
+  {{/if}}
+  </div>
+</template>

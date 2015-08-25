@@ -43,7 +43,7 @@ select:active {
   color: #bbbbbb;
 }
 
-.listed-bo-author {
+.listed-bo-author, .listed-bo-date {
   color: #bbbbbb;
 }
 

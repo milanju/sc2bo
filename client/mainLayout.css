@@ -15,6 +15,21 @@ footer.card-panel {
   position: relative;
 }
 
+.footer-links {
+  position: absolute;
+  z-index: 2;
+  top: 4px;
+  left: 8px;
+}
+
+.footer-links a {
+  color: #bbbbbb;
+}
+
+.footer-links a:hover {
+  color: #00bfa5;
+}
+
 .footer-img {
   position: absolute;
   width: 100%;

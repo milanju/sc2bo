@@ -24,7 +24,8 @@
       <div id="listed-reports-{{this._id}}" class="col s12 listed-reports-container">
         {{#each reports}}
             <div class="listed-report col s12">
-              <div class="report-author">Report by {{this.reporterName}}</div>
+              <div class="report-author">Report by {{this.reporterName}}</div>, 
+              <div class="report-date">{{formatedDate this.createdAt}}</div>
               <div>Reason: {{this.reason}}</div>
             </div>
         {{/each}}

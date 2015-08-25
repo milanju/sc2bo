@@ -100,8 +100,10 @@ Template.buildOrderEdit.events({
     return false;
   },
   'click #edit-bo-delete': function(event) {
+    var title = this.title;
     Meteor.call("deleteBo", this._id, function(err, res) {
-      if(res) {
+      if(!err) {
+        Materialize.toast("Deleted Build Order: " + title, 4000);
         FlowRouter.go("/dashboard");
       }
     });

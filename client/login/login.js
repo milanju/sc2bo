@@ -12,7 +12,7 @@ Template.login.events({
       } else {
         $('#loginModal').closeModal();
         var route = FlowRouter.current().route.name;
-        if((route != "dashboard") && (route != "favorites")) {
+        if((route === "login")) {
           FlowRouter.go('home');
         }
       }

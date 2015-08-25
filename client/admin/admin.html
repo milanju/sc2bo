@@ -1,7 +1,8 @@
 <template name="admin">
   <div class="card-panel component-card">
     {{#if isInRole 'admin'}}
-      Hello admin : - )!
+      <div><a href="/admin/feedback">Feedback</a></div>
+      <div><a href="/admin/bugs">Bug Reports</a></div>
     {{else}}
       {{> login}}
     {{/if}}

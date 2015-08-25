@@ -20,6 +20,12 @@
 
 .report-author {
   font-weight: bold;
+  display: inline;
+}
+
+.report-date {
+  font-size: 12px;
+  display: inline;
 }
 
 .solved-tag {

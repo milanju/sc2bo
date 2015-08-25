@@ -1,0 +1,29 @@
+<template name="feedback">
+  <div class="card-panel component-card">
+    {{#if currentUser}}
+    <div>
+      <div class="row bo-list-title">
+        <div class="col s12">
+          <h5>Feedback</h5>
+          Got criticism, suggestions or praise regarding this website? Please submit any form of feedback right here!
+          <div class="row">
+            <form id="feedback-form" class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="feedback-textarea" class="materialize-textarea"></textarea>
+                  <label for="feedback-textarea">Feedback</label>
+                </div>
+                <div class="input-field col s12">
+                  <button id="feedback-submit-btn" class="btn">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{else}}
+      {{> login}}
+    {{/if}}
+  </div>
+</template>

@@ -1,0 +1,27 @@
+<template name="adminListedFeedback">
+  <div class="row valign-wrapper listed-bo-row">
+    <div class="col">
+      Feedback by {{this.userName}}, {{formatedDate this.createdAt}}
+      <div>
+        <a href="" class="view-feedback">View Feedback</a>
+      </div>
+      <div class="listed-bo-toolbar">
+        <div class="right">
+          {{#if unread}}
+            <a href="" class="feedback-mark-as-read">mark as read</a> -
+          {{else}}
+            <a href="" class="feedback-mark-as-unread">mark as unread</a> -
+          {{/if}}
+          <a href="" class="feedback-delete">delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div id="feedback-content-{{this._id}}" class="col s12 feedback-content-container">
+      <div class="feedback-content col s12">
+        {{this.content}}
+      </div>
+    </div>
+  </div>
+</template>

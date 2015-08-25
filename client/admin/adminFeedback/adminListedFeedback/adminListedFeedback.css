@@ -1,0 +1,10 @@
+.feedback-content-container {
+  display: none;
+}
+
+.feedback-content {
+  background-color: #eeeeee;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+}

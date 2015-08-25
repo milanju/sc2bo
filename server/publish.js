@@ -121,6 +121,18 @@ Meteor.publish("reportsForBo", function(boId) {
   }
 });
 
+Meteor.publish("unreadFeedback", function() {
+  if(Roles.userIsInRole(this.userId, ['admin'])) {
+    return Feedback.find({readBy: {$nin: [this.userId]}});
+  }
+});
+
+Meteor.publish("readFeedback", function() {
+  if(Roles.userIsInRole(this.userId, ['admin'])) {
+    return Feedback.find({readBy: this.userId});
+  }
+});
+
 Meteor.publish(null, function() {
   return Meteor.users.find({_id: this.userId}, {fields: {favorites: 1, upvotes: 1, downvotes: 1, style: 1, admin: 1, isBanned: 1}});
 });

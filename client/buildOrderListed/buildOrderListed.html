@@ -10,7 +10,10 @@
       {{#if unlisted}}[unlisted]{{/if}}
       {{#if private}}[private]{{/if}}
       {{#if deleted}}[deleted]{{/if}}
-      <a href="/bo/{{this.slug}}">{{this.title}}</a> <div class="listed-bo-author">by {{this.author}}</div>
+      <a href="/bo/{{this.slug}}">{{this.title}}</a>
+      <br>
+      <div class="listed-bo-author">by {{this.author}}</div>
+      <div class="listed-bo-date">, {{formatedDate this.createdAt}}</div>
       <div class="listed-bo-toolbar">
         <div class="right">
           {{#if deleted}}
