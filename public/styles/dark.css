@@ -11,7 +11,8 @@ select {
   border-color: #424242
 }
 
-select:active {
+select:focus {
+  outline-color: #606060;
 }
 
 .modal {
@@ -48,6 +49,10 @@ select:active {
 }
 
 .listed-report {
+  background-color: #303030;
+}
+
+.feedback-content {
   background-color: #303030;
 }
 
