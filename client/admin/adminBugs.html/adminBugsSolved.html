@@ -1,18 +1,18 @@
-<template name="adminBugs">
+<template name="adminBugsSolved">
   <div class="card-panel component-card">
   {{#if isInRole 'admin'}}
     <div>
       <div class="row bo-list-title">
         <div class="col s12">
-          <h5>Unsolved Bugs</h5>
+          <h5>Solved Bugs</h5>
         </div>
       </div>
       <div>
-        {{#each unsolvedBugs}}
+        {{#each solvedBugs}}
           {{> adminListedBugs}}
         {{/each}}
       </div>
-      <a href="/admin/bugs/solved">view solved bugs</a>
+      <a href="/admin/bugs">view unsolved bugs</a>
     </div>
   {{else}}
     {{> login}}

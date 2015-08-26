@@ -52,7 +52,7 @@ select:focus {
   background-color: #303030;
 }
 
-.feedback-content {
+.feedback-content, .bug-content {
   background-color: #303030;
 }
 

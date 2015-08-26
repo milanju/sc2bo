@@ -19,7 +19,6 @@ Template.adminListedFeedback.events({
   'click .feedback-mark-as-read': function() {
     Meteor.call('readFeedback', this._id, function(err, res) {
       if(err) {
-        console.log(err);
         Materialize.toast(err.reason, 4000);
       } else {
         Materialize.toast("Marked Feedback as read", 4000);
@@ -29,7 +28,6 @@ Template.adminListedFeedback.events({
   'click .feedback-mark-as-unread': function() {
     Meteor.call('unreadFeedback', this._id, function(err, res) {
       if(err) {
-        console.log(err);
         Materialize.toast(err.reason, 4000);
       } else {
         Materialize.toast("Marked Feedback as unread", 4000);

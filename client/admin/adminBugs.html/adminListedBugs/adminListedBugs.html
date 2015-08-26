@@ -1,0 +1,27 @@
+<template name="adminListedBugs">
+  <div class="row valign-wrapper listed-bo-row">
+    <div class="col">
+      Bug reported by {{this.userName}}, {{formatedDate this.createdAt}}
+      <div>
+        <a href="" class="view-bug">View Bug</a>
+      </div>
+      <div class="listed-bo-toolbar">
+        <div class="right">
+          {{#if solved}}
+            <a href="" class="bug-mark-as-unsolved">mark as unsolved</a> -
+          {{else}}
+            <a href="" class="bug-mark-as-solved">mark as solved</a> -
+          {{/if}}
+          <a href="" class="bug-delete">delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div id="bug-content-{{this._id}}" class="col s12 bug-content-container">
+      <div class="bug-content col s12">
+        {{this.content}}
+      </div>
+    </div>
+  </div>
+</template>
