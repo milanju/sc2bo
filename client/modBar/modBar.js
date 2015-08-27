@@ -10,6 +10,14 @@ Template.modBar.onCreated(function() {
   });
 });
 
+Template.modBar.onRendered(function() {
+  subs.subscribe('unsolvedBugs');
+});
+
+Template.modBar.onDestroyed(function() {
+  subs.clear();
+  subs.reset();
+})
 Template.modBar.helpers({
   unreadFeedback: function() {
     return Feedback.find({readBy: {$nin: [Meteor.userId()]}}).fetch().length;
