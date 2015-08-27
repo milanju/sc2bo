@@ -1,7 +1,13 @@
 Template.modBar.onCreated(function() {
-  subs.subscribe('openReports');
-  subs.subscribe('unsolvedBugs');
-  subs.subscribe('unreadFeedback');
+  console.log("created!");
+  var instance = this;
+  instance.ready = new ReactiveVar();
+  instance.autorun(function() {
+    var sub1 = subs.subscribe('openReports');
+    var sub2 = subs.subscribe('unsolvedBugs');
+    var sub3 = subs.subscribe('unreadFeedback');
+    instance.ready.set(sub1.ready() && sub2.ready() && sub3.ready());
+  });
 });
 
 Template.modBar.helpers({
