@@ -55,8 +55,7 @@ Meteor.publish("favoriteBuildOrders", function() {
       ], _id: {$in: favorites}
     });
   } else {
-    this.stop();
-    return;
+    return [];
   }
 });
 
@@ -83,8 +82,7 @@ Meteor.publish("deletedBuildOrders", function() {
       published: "deleted"
     });
   } else {
-    this.stop();
-    return;
+    return [];
   }
 });
 
@@ -92,8 +90,7 @@ Meteor.publish("allUsers", function() {
   if(Roles.userIsInRole(this.userId, ['admin', 'moderator'])) {
     return Meteor.users.find();
   } else {
-    this.stop();
-    return;
+    return [];
   }
 });
 
@@ -103,8 +100,7 @@ Meteor.publish("openReports", function() {
       solved: false
     });
   } else {
-    this.stop();
-    return;
+    return [];
   }
 });
 
@@ -114,8 +110,7 @@ Meteor.publish("closedReports", function() {
       solved: true
     });
   } else {
-    this.stop();
-    return;
+    return [];
   }
 });
 
@@ -128,8 +123,7 @@ Meteor.publish("openReportedBos", function() {
     }
     return BuildOrders.find({_id: {$in: boIds}});
   } else {
-    this.stop();
-    return;
+    return [];
   }
 });
 
@@ -137,8 +131,7 @@ Meteor.publish("reportsForBo", function(boId) {
   if(Roles.userIsInRole(this.userId, ['admin', 'moderator'])) {
     return Reports.find({boId: boId});
   } else {
-    this.stop();
-    return;
+    return [];
   }
 });
 
@@ -146,8 +139,7 @@ Meteor.publish("unreadFeedback", function() {
   if(Roles.userIsInRole(this.userId, ['admin'])) {
     return Feedback.find({readBy: {$nin: [this.userId]}});
   } else {
-    this.stop();
-    return;
+    return [];
   }
 });
 
@@ -155,8 +147,7 @@ Meteor.publish("readFeedback", function() {
   if(Roles.userIsInRole(this.userId, ['admin'])) {
     return Feedback.find({readBy: this.userId});
   } else {
-    this.stop();
-    return;
+    return [];
   }
 });
 
@@ -165,8 +156,7 @@ Meteor.publish("unsolvedBugs", function() {
     console.log("subscribing bugs");
     return Bugs.find({solved: false});
   } else {
-    this.stop();
-    return;
+    return [];
   }
 });
 
@@ -174,8 +164,7 @@ Meteor.publish("solvedBugs", function() {
   if(Roles.userIsInRole(this.userId, ['admin'])) {
     return Bugs.find({solved: true});
   } else {
-    this.stop();
-    return;
+    return [];
   }
 });
 

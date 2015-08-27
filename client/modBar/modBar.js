@@ -1,5 +1,4 @@
 Template.modBar.onCreated(function() {
-  console.log("created!");
   var instance = this;
   instance.ready = new ReactiveVar();
   instance.autorun(function() {
@@ -10,14 +9,6 @@ Template.modBar.onCreated(function() {
   });
 });
 
-Template.modBar.onRendered(function() {
-  subs.subscribe('unsolvedBugs');
-});
-
-Template.modBar.onDestroyed(function() {
-  subs.clear();
-  subs.reset();
-})
 Template.modBar.helpers({
   unreadFeedback: function() {
     return Feedback.find({readBy: {$nin: [Meteor.userId()]}}).fetch().length;

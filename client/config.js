@@ -2,6 +2,10 @@ Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
 });
 
+Accounts.onLogin(function() {
+  //subs.clear();
+});
+
 Meteor.startup(function() {
   Session.set("filter-exp-HotS", true);
   Session.set("filter-exp-LotV", false);
