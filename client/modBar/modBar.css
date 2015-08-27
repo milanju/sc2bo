@@ -12,3 +12,30 @@
 .modBar .card-panel a:hover {
   color: #ef5350;
 }
+
+.modBarLink {
+  position: relative;
+}
+
+.modBarCount {
+  position: absolute;
+  top: -16px;
+  right: 0;
+  color: #FFF;
+  background-color: #b71c1c;
+  font-size: 11px;
+  font-weight: bold;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border-radius: 2px;
+}
+
+.inactive-mod-bar-icon {
+  color: #263238;
+}
+
+.inactive-mod-bar-icon:hover {
+  color: #ef5350;
+}

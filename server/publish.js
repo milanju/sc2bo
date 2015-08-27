@@ -39,22 +39,25 @@ Meteor.publish("favoriteBuildOrders", function() {
   var favorites = []
   if(this.userId){
     var favorites = Meteor.users.findOne({_id: this.userId}).favorites;
-  }
-  return BuildOrders.find({
-    $or: [
-      {$and: [
-        {published: {$ne: "deleted"}},
-        {userId: this.userId}
-      ]},
-      {$and: [
-        {published: "true"},
-        {$or: [
-          {privacy: "public"},
-          {privacy: "unlisted"}
+    return BuildOrders.find({
+      $or: [
+        {$and: [
+          {published: {$ne: "deleted"}},
+          {userId: this.userId}
+        ]},
+        {$and: [
+          {published: "true"},
+          {$or: [
+            {privacy: "public"},
+            {privacy: "unlisted"}
+          ]}
         ]}
-      ]}
-    ], _id: {$in: favorites}
-  });
+      ], _id: {$in: favorites}
+    });
+  } else {
+    this.stop();
+    return;
+  }
 });
 
 Meteor.publish("publicBuildOrders", function(limit, sort, expansion, matchups) {
@@ -79,12 +82,18 @@ Meteor.publish("deletedBuildOrders", function() {
     return BuildOrders.find({
       published: "deleted"
     });
+  } else {
+    this.stop();
+    return;
   }
 });
 
 Meteor.publish("allUsers", function() {
   if(Roles.userIsInRole(this.userId, ['admin', 'moderator'])) {
     return Meteor.users.find();
+  } else {
+    this.stop();
+    return;
   }
 });
 
@@ -93,6 +102,9 @@ Meteor.publish("openReports", function() {
     return Reports.find({
       solved: false
     });
+  } else {
+    this.stop();
+    return;
   }
 });
 
@@ -101,6 +113,9 @@ Meteor.publish("closedReports", function() {
     return Reports.find({
       solved: true
     });
+  } else {
+    this.stop();
+    return;
   }
 });
 
@@ -112,36 +127,54 @@ Meteor.publish("openReportedBos", function() {
       boIds.push(reports[i].boId);
     }
     return BuildOrders.find({_id: {$in: boIds}});
+  } else {
+    this.stop();
+    return;
   }
 });
 
 Meteor.publish("reportsForBo", function(boId) {
   if(Roles.userIsInRole(this.userId, ['admin', 'moderator'])) {
     return Reports.find({boId: boId});
+  } else {
+    this.stop();
+    return;
   }
 });
 
 Meteor.publish("unreadFeedback", function() {
   if(Roles.userIsInRole(this.userId, ['admin'])) {
     return Feedback.find({readBy: {$nin: [this.userId]}});
+  } else {
+    this.stop();
+    return;
   }
 });
 
 Meteor.publish("readFeedback", function() {
   if(Roles.userIsInRole(this.userId, ['admin'])) {
     return Feedback.find({readBy: this.userId});
+  } else {
+    this.stop();
+    return;
   }
 });
 
 Meteor.publish("unsolvedBugs", function() {
   if(Roles.userIsInRole(this.userId, ['admin'])) {
     return Bugs.find({solved: false});
+  } else {
+    this.stop();
+    return;
   }
 });
 
 Meteor.publish("solvedBugs", function() {
   if(Roles.userIsInRole(this.userId, ['admin'])) {
     return Bugs.find({solved: true});
+  } else {
+    this.stop();
+    return;
   }
 });
 

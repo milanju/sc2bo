@@ -1,7 +1,7 @@
 Template.modReports.helpers({
-  reports: function() {
+  /*reports: function() {
     return Reports.find({solved: false});
-  },
+  },*/
   buildOrders: function() {
     var reports = Reports.find({solved: false}).fetch();
     var boIds = [];

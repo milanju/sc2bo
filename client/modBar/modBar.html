@@ -6,6 +6,32 @@
           <a href="/admin">Admin</a>
         {{/if}}
         <a href="/mod">Mod</a>
+        <div class="right">
+          <a href="/mod/reports" class="modBarLink">
+            {{#if openReportsExist}}
+              <i class="material-icons">report_problem</i>
+              <div class="modBarCount">{{openReports}}</div>
+            {{else}}
+              <i class="material-icons inactive-mod-bar-icon">report_problem</i>
+            {{/if}}
+          </a>
+          <a href="/admin/bugs" class="modBarLink">
+            {{#if unsolvedBugsExist}}
+              <i class="material-icons">bug_report</i>
+              <div class="modBarCount">{{unsolvedBugs}}</div>
+            {{else}}
+              <i class="material-icons inactive-mod-bar-icon">bug_report</i>
+            {{/if}}
+          </a>
+          <a href="/admin/feedback" class="modBarLink">
+            {{#if unreadFeedbackExist}}
+              <i class="material-icons">feedback</i>
+              <div class="modBarCount">{{unreadFeedback}}</div>
+            {{else}}
+              <i class="material-icons inactive-mod-bar-icon">feedback</i>
+            {{/if}}
+          </a>
+        </div>
       </div>
     </div>
   {{/if}}

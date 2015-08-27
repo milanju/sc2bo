@@ -29,7 +29,9 @@
         </ul>
       </div>
     </nav>
-    {{> modBar}}
+    {{#if isInRole 'admin,moderator'}}
+      {{> modBar}}
+    {{/if}}
     {{> Template.dynamic template=main}}
     {{> loginModal}}
     {{> registerModal}}
