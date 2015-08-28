@@ -37,3 +37,7 @@ footer.card-panel {
   top: 0;
   left: 0;
 }
+
+.nav-icon {
+  margin-right: 0 !important;
+}

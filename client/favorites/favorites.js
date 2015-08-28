@@ -5,7 +5,7 @@ Template.favorites.helpers({
     var sort = {score: -1};
     var favorites = Meteor.user().favorites;
     // Filter Protoss Matchups
-    if(!Session.get("filter-player-protoss")) {
+    if(Session.get("player-race") === "protoss") {
       if(!Session.get("filter-opp-protoss")) {
         matchups.push("PvP");
       }
@@ -18,7 +18,7 @@ Template.favorites.helpers({
     }
 
     // Filter Terran Matchups
-    if(!Session.get("filter-player-terran")) {
+    if(Session.get("player-race") === "terran") {
       if(!Session.get("filter-opp-protoss")) {
         matchups.push("TvP");
       }
@@ -31,7 +31,7 @@ Template.favorites.helpers({
     }
 
     // Filter Zerg Matchups
-    if(!Session.get("filter-player-zerg")) {
+    if(Session.get("player-race") === "zerg") {
       if(!Session.get("filter-opp-protoss")) {
         matchups.push("ZvP");
       }
@@ -44,7 +44,6 @@ Template.favorites.helpers({
     }
     if(Session.get("filter-exp-HotS")) expansion = "HotS";
     if(Session.get("filter-exp-LotV")) expansion = "LotV";
-    if(Session.get("filter-exp-WoL")) expansion = "WoL";
 
     if(Session.get("sort-top")) sort = {score: -1};
     if(Session.get("sort-new")) sort = {createdAt: -1};

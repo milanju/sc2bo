@@ -50,6 +50,7 @@ Template.buildOrderEdit.events({
 
     event.target.elements[0].value = "";
     event.target.elements[1].value = "";
+    event.target.elements[0].focus();
     return false;
   },
   'click #edit-bo-submit': function(event) {

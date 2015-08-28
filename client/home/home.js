@@ -6,7 +6,7 @@ Template.home.onCreated(function() {
   this.ready = new ReactiveVar(false);
   instance.autorun(function() {
     var matchups = [];
-    if(!Session.get("filter-player-protoss")) {
+    if(Session.get("player-race") === "protoss") {
       if(!Session.get("filter-opp-protoss")) {
         matchups.push("PvP");
       }
@@ -19,7 +19,7 @@ Template.home.onCreated(function() {
     }
 
     // Filter Terran Matchups
-    if(!Session.get("filter-player-terran")) {
+    if(Session.get("player-race") === "terran") {
       if(!Session.get("filter-opp-protoss")) {
         matchups.push("TvP");
       }
@@ -32,7 +32,7 @@ Template.home.onCreated(function() {
     }
 
     // Filter Zerg Matchups
-    if(!Session.get("filter-player-zerg")) {
+    if(Session.get("player-race") === "zerg") {
       if(!Session.get("filter-opp-protoss")) {
         matchups.push("ZvP");
       }
@@ -45,10 +45,8 @@ Template.home.onCreated(function() {
     }
     if(Session.get("sort-top")) sort = {score: -1};
     if(Session.get("sort-new")) sort = {createdAt: -1};
-    if(Session.get("sort-hot")) sort = {score: -1};
     if(Session.get("filter-exp-HotS")) expansion = "HotS";
     if(Session.get("filter-exp-LotV")) expansion = "LotV";
-    if(Session.get("filter-exp-WoL")) expansion = "WoL";
 
     this.subscription = subs.subscribe('publicBuildOrders', Session.get("limit"), sort, expansion, matchups);
     instance.ready.set(false);
@@ -64,7 +62,7 @@ Template.home.helpers({
     var expansion = "HotS";
     var sort = {score: -1};
     // Filter Protoss Matchups
-    if(!Session.get("filter-player-protoss")) {
+    if(Session.get("player-race") === "protoss") {
       if(!Session.get("filter-opp-protoss")) {
         matchups.push("PvP");
       }
@@ -77,7 +75,7 @@ Template.home.helpers({
     }
 
     // Filter Terran Matchups
-    if(!Session.get("filter-player-terran")) {
+    if(Session.get("player-race") === "terran") {
       if(!Session.get("filter-opp-protoss")) {
         matchups.push("TvP");
       }
@@ -90,7 +88,7 @@ Template.home.helpers({
     }
 
     // Filter Zerg Matchups
-    if(!Session.get("filter-player-zerg")) {
+    if(Session.get("player-race") === "zerg") {
       if(!Session.get("filter-opp-protoss")) {
         matchups.push("ZvP");
       }

@@ -1,9 +1,9 @@
 <template name="filter">
   <div class="row">
     <div class="col m5 s12 center">
-      <button value="protoss" class="btn small-button player-race-btn {{playerFilter 'protoss'}}">Protoss</button>
-      <button value="terran" class="btn small-button player-race-btn {{playerFilter 'terran'}}">Terran</button>
-      <button value="zerg" class="btn small-button player-race-btn {{playerFilter 'zerg'}}">Zerg</button>
+      <button value="protoss" class="btn small-button player-race-btn {{playerRace 'protoss'}}">Protoss</button>
+      <button value="terran" class="btn small-button player-race-btn {{playerRace 'terran'}}">Terran</button>
+      <button value="zerg" class="btn small-button player-race-btn {{playerRace 'zerg'}}">Zerg</button>
     </div>
     <div class="col m2 s12 center">
       vs.
@@ -16,7 +16,6 @@
     <div class="col m5 s12 center">
       <button value="HotS" class="btn small-button expansion-radio-btn hots-btn {{expansionFilter 'HotS'}}">HotS</button>
       <button value="LotV" class="btn small-button expansion-radio-btn lotv-btn {{expansionFilter 'LotV'}}">LotV</button>
-      <button value="WoL" class="btn small-button expansion-radio-btn wol-btn {{expansionFilter 'WoL'}}">WoL</button>
     </div>
     <div class="col m2 s12 center">
       -
@@ -24,7 +23,6 @@
     <div class="col m5 s12 center">
       <button value="top" class="btn small-button sort-btn {{sortRadio 'top'}}">top</button>
       <button value="new" class="btn small-button sort-btn {{sortRadio 'new'}}">new</button>
-      <button value="hot" class="btn small-button sort-btn {{sortRadio 'hot'}}">hot</button>
     </div>
   </div>
 </template>
