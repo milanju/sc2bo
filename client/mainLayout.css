@@ -2,6 +2,8 @@ footer.card-panel {
   background-color: #303030;
   color: #dddddd;
   margin-top: 0px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 }
 
 .login-register-card {

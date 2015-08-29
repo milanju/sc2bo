@@ -1,27 +1,31 @@
 <template name="favorites">
   <div class="card-panel component-card">
     {{#if currentUser}}
-      <div>
-        {{> filter}}
-        {{#if currentUser}}
-          <div class="row bo-list-title">
-            <div class="col s12">
-              <h5>Favorite Build Orders</h5>
+      {{#if raceNotPicked}}
+        {{> pickRace}}
+      {{else}}
+        <div>
+          {{> filter}}
+          {{#if currentUser}}
+            <div class="row bo-list-title">
+              <div class="col s12">
+                <h5>Favorite Build Orders</h5>
+              </div>
+              {{> newBoButton}}
             </div>
-            {{> newBoButton}}
-          </div>
-          {{#if isReady "favoriteBuildOrders"}}
-            <div>
-              {{#each buildOrders}}
-                {{> buildOrderListed}}
-              {{/each}}
-            </div>
-          {{else}}
-            {{> loading}}
-            {{> hideFooter}}
+            {{#if isReady "favoriteBuildOrders"}}
+              <div>
+                {{#each buildOrders}}
+                  {{> buildOrderListed}}
+                {{/each}}
+              </div>
+            {{else}}
+              {{> loading}}
+              {{> hideFooter}}
+            {{/if}}
           {{/if}}
-        {{/if}}
-      </div>
+        </div>
+      {{/if}}
     {{else}}
       {{> login}}
     {{/if}}

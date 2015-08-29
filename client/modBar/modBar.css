@@ -3,6 +3,7 @@
   margin-top: 0;
   margin-bottom: 0;
   padding: 4px;
+  border-radius: 0;
 }
 
 .modBar .card-panel a {

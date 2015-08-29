@@ -1,6 +1,10 @@
 Template.filter.helpers({
   playerRace: function(race) {
-    if(Session.get("player-race") !== race) return "filtered";
+    if(Meteor.user()) {
+      if(Meteor.user().race !== race) return "filtered";
+    } else {
+      if(Session.get("player-race") !== race) return "filtered";
+    }
   },
   oppFilter: function(race) {
     if(Session.get("filter-opp-"+race) === true) return "filtered";
@@ -16,7 +20,11 @@ Template.filter.helpers({
 Template.filter.events({
   'click .player-race-btn': function(event) {
     var race = event.target.value;
-    Session.set("player-race", race);
+    if(Meteor.user()) {
+      Meteor.call("setRace", race);
+    } else {
+      Session.set("player-race", race);
+    }
     Session.set("limit", 8);
   },
   'click .opp-race-btn': function(event) {

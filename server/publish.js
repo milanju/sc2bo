@@ -169,5 +169,5 @@ Meteor.publish("solvedBugs", function() {
 });
 
 Meteor.publish(null, function() {
-  return Meteor.users.find({_id: this.userId}, {fields: {favorites: 1, upvotes: 1, downvotes: 1, style: 1, admin: 1, isBanned: 1}});
+  return Meteor.users.find({_id: this.userId}, {fields: {favorites: 1, upvotes: 1, downvotes: 1, style: 1, admin: 1, isBanned: 1, race: 1}});
 });

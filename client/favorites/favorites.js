@@ -4,8 +4,15 @@ Template.favorites.helpers({
     var expansion = "HotS";
     var sort = {score: -1};
     var favorites = Meteor.user().favorites;
+    
     // Filter Protoss Matchups
-    if(Session.get("player-race") === "protoss") {
+    var pushProtoss = false;
+    if(Meteor.user()) {
+      if(Meteor.user().race === "protoss") pushProtoss = true;
+    } else {
+      if(Session.get("player-race") === "protoss") pushProtoss = true;
+    }
+    if(pushProtoss) {
       if(!Session.get("filter-opp-protoss")) {
         matchups.push("PvP");
       }
@@ -18,7 +25,13 @@ Template.favorites.helpers({
     }
 
     // Filter Terran Matchups
-    if(Session.get("player-race") === "terran") {
+    var pushTerran = false;
+    if(Meteor.user()) {
+      if(Meteor.user().race === "terran") pushTerran = true;
+    } else {
+      if(Session.get("player-race") === "terran") pushTerran = true;
+    }
+    if(pushTerran) {
       if(!Session.get("filter-opp-protoss")) {
         matchups.push("TvP");
       }
@@ -31,7 +44,13 @@ Template.favorites.helpers({
     }
 
     // Filter Zerg Matchups
-    if(Session.get("player-race") === "zerg") {
+    var pushZerg = false;
+    if(Meteor.user()) {
+      if(Meteor.user().race === "zerg") pushZerg = true;
+    } else {
+      if(Session.get("player-race") === "zerg") pushZerg = true;
+    }
+    if(pushZerg) {
       if(!Session.get("filter-opp-protoss")) {
         matchups.push("ZvP");
       }

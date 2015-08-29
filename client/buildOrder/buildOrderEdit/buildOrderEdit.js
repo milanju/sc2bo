@@ -29,6 +29,7 @@ Template.buildOrderEdit.helpers({
 
 Template.buildOrderEdit.events({
   'submit #edit-bo-add-step': function(event) {
+    console.log("hey");
     function getPosition(arr) {
       if(arr.length === 0) return 0;
       var pos = 0;
@@ -42,11 +43,15 @@ Template.buildOrderEdit.events({
     var supply = event.target.elements[0].value;
     if(supply === "") supply = "->";
     var action = event.target.elements[1].value;
+    console.log(event.target.elements[1].value);
     var newBo = this.bo;
     var position = getPosition(newBo);
     var step = {supply: supply, action: action, position: position};
-    newBo.push(step);
-    BuildOrders.update({_id: this._id}, {$set: {bo: newBo}});
+    if(action !== "") {
+      BuildOrders.update({_id: this._id}, {$push: {bo: step}});
+    } else {
+      Materialize.toast("Action is required", 4000);
+    }
 
     event.target.elements[0].value = "";
     event.target.elements[1].value = "";

@@ -3,7 +3,9 @@ Accounts.ui.config({
 });
 
 Accounts.onLogin(function() {
-  //subs.clear();
+  if(!Meteor.user().race && Session.get("player-race")) {
+    Meteor.call("setRace", Session.get("player-race"));
+  }
 });
 
 Meteor.startup(function() {

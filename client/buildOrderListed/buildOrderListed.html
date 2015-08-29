@@ -5,7 +5,7 @@
       <div class="{{upvoted}} {{downvoted}}">{{this.score}}</div>
       <a href="" onclick="return false"><i class="fa fa-arrow-down downvote {{downvoted}}"></i></a>
     </div>
-    <div class="col">
+    <div class="col s12">
       [{{this.matchup}}]
       {{#if unlisted}}[unlisted]{{/if}}
       {{#if private}}[private]{{/if}}
@@ -14,15 +14,15 @@
       <br>
       <div class="listed-bo-author">by {{this.author}},</div>
       <div class="listed-bo-date"> {{formatedDate this.createdAt}}</div>
-      <div class="listed-bo-toolbar">
-        <div class="right">
-          {{#if deleted}}
-            {{> restoreButton}}
-          {{/if}}
-          {{> editButton}}
-          {{> favoriteButton}}
-          {{> reportButton}}
-        </div>
+    </div>
+    <div class="listed-bo-toolbar col s12">
+      <div class="right">
+        {{#if deleted}}
+          {{> restoreButton}}
+        {{/if}}
+        {{> editButton}}
+        {{> favoriteButton}}
+        {{> reportButton}}
       </div>
     </div>
   </div>

@@ -1,23 +1,27 @@
 <template name="home">
-  <div class="card-panel component-card">
+  <div class="card-panel component-card card-bg">
     {{#if subsReady}}
     {{else}}
       {{> loading}}
     {{/if}}
-    <div>
-      {{> filter}}
-      <div class="row bo-list-title">
-        <div class="col s12">
-          <h5>Public Build Orders</h5>
-        </div>
-        {{> newBoButton}}
-      </div>
+    {{#if raceNotPicked}}
+      {{> pickRace}}
+    {{else}}
       <div>
-        {{#each buildOrders}}
-          {{> buildOrderListed}}
-        {{/each}}
+        {{> filter}}
+        <div class="row bo-list-title">
+          <div class="col s12">
+            <h5>Public Build Orders</h5>
+          </div>
+          {{> newBoButton}}
+        </div>
+        <div>
+          {{#each buildOrders}}
+            {{> buildOrderListed}}
+          {{/each}}
+        </div>
+        <a class="home-load-more" href="" onclick="return false;">load more</a>
       </div>
-      <a class="home-load-more" href="" onclick="return false;">load more</a>
-    </div>
+    {{/if}}
   </div>
 </template>
