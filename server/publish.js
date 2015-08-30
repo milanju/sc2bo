@@ -77,7 +77,6 @@ Meteor.publish("myBuildOrders", function() {
 
 Meteor.publish("deletedBuildOrders", function() {
   if(Roles.userIsInRole(this.userId, ['admin', 'moderator'])) {
-    console.log("yeah..");
     return BuildOrders.find({
       published: "deleted"
     });
@@ -153,7 +152,6 @@ Meteor.publish("readFeedback", function() {
 
 Meteor.publish("unsolvedBugs", function() {
   if(Roles.userIsInRole(this.userId, ['admin'])) {
-    console.log("subscribing bugs");
     return Bugs.find({solved: false});
   } else {
     return [];
