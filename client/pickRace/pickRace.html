@@ -1,4 +1,11 @@
 <template name="pickRace">
+  {{#if currentUser}}
+  {{else}}
+  <p class="center">
+    Welcome to sc2bo.com! The purpose of this web application is to easily create, share, look-up & rate StarCraft 2 Build Orders. Have your Build Orders everywhere with you, on all your devices. You may create public BOs to share with the Community, unlisted BOs to share with your friends only, or private BOs, to not reveal your special tactics.
+    Choose a race below to lurk or <a href="" class="intro-register">register</a> right away to get going!
+  </p>
+  {{/if}}
   <h4 class="center">pick your race!</h4>
   <div class="row">
     <div class="col m4 s12 race-pick-container center">

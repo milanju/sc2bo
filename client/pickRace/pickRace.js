@@ -19,5 +19,13 @@ Template.pickRace.events({
     } else {
       Session.set('player-race', 'zerg');
     }
+  },
+  'click .intro-register': function() {
+    $('#loginModal').closeModal();
+    $('#registerModal').openModal();
+    setTimeout(function() {
+      $('#register-username').focus();
+    }, 100);
+    return false;
   }
 });
