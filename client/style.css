@@ -4,6 +4,12 @@
     }
 }
 
+@media screen and (max-width: 500px) {
+    .hide-on-small {
+        display: none !important;
+    }
+}
+
 body {
   background-color: #eeeeee;
   background-image: url("/img/pattern_creampaper.png");
