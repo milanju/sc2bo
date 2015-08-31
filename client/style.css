@@ -23,6 +23,10 @@ nav ul a {
   color: #dddddd;
 }
 
+.extra-card {
+  background-color: #eeeeee;
+}
+
 .component-card {
   margin-top: 0px;
   margin-bottom: 0px;
