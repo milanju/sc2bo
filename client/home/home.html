@@ -1,12 +1,12 @@
 <template name="home">
+  {{#if raceNotPicked}}
+    {{> pickRace}}
+  {{else}}
   <div class="card-panel component-card card-bg">
     {{#if subsReady}}
     {{else}}
       {{> loading}}
     {{/if}}
-    {{#if raceNotPicked}}
-      {{> pickRace}}
-    {{else}}
       <div>
         {{> filter}}
         <div class="row bo-list-title">
@@ -22,6 +22,6 @@
         </div>
         <a class="home-load-more" href="" onclick="return false;">load more</a>
       </div>
-    {{/if}}
   </div>
+  {{/if}}
 </template>

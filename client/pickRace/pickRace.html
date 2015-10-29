@@ -1,24 +1,38 @@
 <template name="pickRace">
-  {{#if currentUser}}
-  {{else}}
-  <p class="center">
-    Welcome to sc2bo.com! The purpose of this web application is to easily create, share, look-up & rate StarCraft 2 Build Orders. Have your Build Orders everywhere with you, on all your devices. You may create public BOs to share with the Community, unlisted BOs to share with your friends only, or private BOs, to not reveal your special tactics.
-    Choose a race below to lurk or <a href="" class="intro-register">register</a> right away to get going!
-  </p>
-  {{/if}}
-  <h4 class="center">pick your race!</h4>
-  <div class="row">
-    <div class="col m4 s12 race-pick-container center">
-      <a href="" class="pick-protoss"><img src="/img/icon-protoss.png" class="responsive-img race-pick-img" alt="" /></a><br>
-      <a href="" class="pick-protoss waves-effect waves-light btn-large">Protoss</a>
+    {{#if currentUser}}
+    {{else}}
+    <div class="card-panel component-card">
+      <p class="center">
+        Welcome to sc2bo.com, the best Build Order ressource for StarCraft® II: Legacy
+        of the Void™. Have your Build Orders everywhere with you,
+        on all your devices. Create public strategies to
+        share with the Community, unlisted ones to share with your friends only,
+        or private build orders, to not reveal your Special-Tactics™.
+        Choose a race below to lurk or <a href="" class="intro-register">register</a> right away to get going!
+      </p>
+      <h4 class="center">pick your race!</h4>
     </div>
-    <div class="col m4 s12 race-pick-container center">
-      <a href="" class="pick-terran"><img src="/img/icon-terran.png" class="responsive-img race-pick-img" alt="" /></a><br>
-      <a href="" class="pick-terran waves-effect waves-light btn-large">Terran</a>
+    {{/if}}
+    <div class="race-pick-section">
+      <div class="row race-pick-row">
+        <div class="col m4 s12">
+          <div class="race-pick-container center">
+            <a href="" class="pick-protoss"><img src="/img/icon-protoss.png" class="responsive-img race-pick-img" alt="" /></a><br>
+            <a href="" class="pick-protoss waves-effect waves-light btn-large">Protoss</a>
+          </div>
+        </div>
+        <div class="col m4 s12">
+          <div class="race-pick-container center">
+            <a href="" class="pick-terran"><img src="/img/icon-terran.png" class="responsive-img race-pick-img" alt="" /></a><br>
+            <a href="" class="pick-terran waves-effect waves-light btn-large">Terran</a>
+          </div>
+        </div>
+        <div class="col m4 s12">
+          <div class="race-pick-container center">
+            <a href="" class="pick-zerg"><img src="/img/icon-zerg.png" class="responsive-img race-pick-img" alt="" /></a><br>
+            <a href="" class="pick-zerg waves-effect waves-light btn-large">Zerg</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col m4 s12 race-pick-container center">
-      <a href="" class="pick-zerg"><img src="/img/icon-zerg.png" class="responsive-img race-pick-img" alt="" /></a><br>
-      <a href="" class="pick-zerg waves-effect waves-light btn-large">Zerg</a>
-    </div>
-  </div>
 </template>

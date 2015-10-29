@@ -1,9 +1,9 @@
 <template name="dashboard">
-  <div class="card-panel component-card">
-    {{#if currentUser}}
-      {{#if raceNotPicked}}
-        {{> pickRace}}
-      {{else}}
+  {{#if currentUser}}
+    {{#if raceNotPicked}}
+      {{> pickRace}}
+    {{else}}
+      <div class="card-panel component-card">
         <div>
           {{> filter}}
           <div class="row bo-list-title">
@@ -23,9 +23,11 @@
             {{> hideFooter}}
           {{/if}}
         </div>
-      {{/if}}
-    {{else}}
-      {{> login}}
+      </div>
     {{/if}}
-  </div>
+  {{else}}
+    <div class="card-panel component-card">
+      {{> login}}
+    </div>
+  {{/if}}
 </template>

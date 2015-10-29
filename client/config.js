@@ -9,8 +9,8 @@ Accounts.onLogin(function() {
 });
 
 Meteor.startup(function() {
-  Session.set("filter-exp-HotS", true);
-  Session.set("filter-exp-LotV", false);
+  Session.set("filter-exp-HotS", false);
+  Session.set("filter-exp-LotV", true);
   Session.set("filter-exp-WoL", false);
   Session.set("sort-top", true);
   Session.set("sort-new", false);
