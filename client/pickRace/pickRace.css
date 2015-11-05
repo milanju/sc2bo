@@ -1,5 +1,4 @@
 .race-pick-section {
-  background-color: #FFF;
 }
 
 .race-pick-row {
@@ -8,7 +7,6 @@
 
 .race-pick-container {
   position: relative;
-  background-color: #FFF;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -20,7 +18,7 @@
   bottom: 0px;
   width: 0;
   height: 10px;
-  background-color: red;
+  background-color: #039be5;
   content: "";
   transition: width 0.3s ease-in-out;
 }
